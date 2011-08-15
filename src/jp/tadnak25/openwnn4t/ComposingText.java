@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import java.util.Iterator;
 import java.util.ArrayList;
@@ -79,14 +80,14 @@ public class ComposingText {
      */
     public void debugout() {
         for (int i = 0; i < MAX_LAYER; i++) {
-            Log.d("OpenWnn", "ComposingText["+i+"]");
-            Log.d("OpenWnn", "  cur = " + mCursor[i]);
+            Log.d("OpenWnn4T", "ComposingText["+i+"]");
+            Log.d("OpenWnn4T", "  cur = " + mCursor[i]);
             String tmp = "";
             for (Iterator<StrSegment> it = mStringLayer[i].iterator(); it.hasNext();) {
                 StrSegment ss = it.next();
                 tmp += "(" + ss.string + "," + ss.from + "," + ss.to + ")";
             }
-            Log.d("OpenWnn", "  str = "+tmp);
+            Log.d("OpenWnn4T", "  str = "+tmp);
         }
     }
 

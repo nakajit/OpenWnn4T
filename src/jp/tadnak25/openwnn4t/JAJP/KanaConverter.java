@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +15,16 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn.JAJP;
+package jp.tadnak25.openwnn4t.JAJP;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import jp.co.omronsoft.openwnn.WnnDictionary;
-import jp.co.omronsoft.openwnn.WnnPOS;
-import jp.co.omronsoft.openwnn.WnnWord;
+import jp.tadnak25.openwnn4t.WnnDictionary;
+import jp.tadnak25.openwnn4t.WnnPOS;
+import jp.tadnak25.openwnn4t.WnnWord;
 
 /**
  * The EISU-KANA converter class for Japanese IME.

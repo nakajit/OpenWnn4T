@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +15,11 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn.JAJP;
+package jp.tadnak25.openwnn4t.JAJP;
 
-import jp.co.omronsoft.openwnn.LetterConverter;
-import jp.co.omronsoft.openwnn.ComposingText;
-import jp.co.omronsoft.openwnn.StrSegment;
+import jp.tadnak25.openwnn4t.LetterConverter;
+import jp.tadnak25.openwnn4t.ComposingText;
+import jp.tadnak25.openwnn4t.StrSegment;
 import java.util.HashMap;
 import android.content.SharedPreferences;
 

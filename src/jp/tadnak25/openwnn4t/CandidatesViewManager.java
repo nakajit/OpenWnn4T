@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import android.view.View;
 import android.content.SharedPreferences;
@@ -62,7 +63,7 @@ public interface CandidatesViewManager {
      *
      * @return The candidates view created in the initialize process; {@code null} if cannot create a candidates view.
      */
-    public View initView(OpenWnn parent, int width, int height);
+    public View initView(OpenWnn4T parent, int width, int height);
 
     /**
      * Get the candidates view being used currently.

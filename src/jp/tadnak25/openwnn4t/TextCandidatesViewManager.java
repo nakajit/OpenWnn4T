@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import java.util.ArrayList;
 import android.content.Context;
@@ -88,7 +89,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
     /** Layout for the candidates list on full view */
     private AbsoluteLayout mViewCandidateList2nd;
     /** {@link OpenWnn} instance using this manager */
-    private OpenWnn mWnn;
+    private OpenWnn4T mWnn;
     /** View type (VIEW_TYPE_NORMAL or VIEW_TYPE_FULL or VIEW_TYPE_CLOSE) */
     private int mViewType;
     /** Portrait display({@code true}) or landscape({@code false}) */
@@ -261,7 +262,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
     }
 
     /** @see CandidatesViewManager */
-    public View initView(OpenWnn parent, int width, int height) {
+    public View initView(OpenWnn4T parent, int width, int height) {
         mWnn = parent;
         mViewWidth = width;
         mViewHeight = height;

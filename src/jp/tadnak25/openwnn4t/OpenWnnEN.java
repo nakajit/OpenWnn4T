@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +15,9 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
-import jp.co.omronsoft.openwnn.EN.*;
+import jp.tadnak25.openwnn4t.EN.*;
 import android.content.SharedPreferences;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -42,7 +43,7 @@ import android.view.inputmethod.EditorInfo;
  *
  * @author Copyright (C) 2009 OMRON SOFTWARE CO., LTD.  All Rights Reserved.
  */
-public class OpenWnnEN extends OpenWnn {
+public class OpenWnnEN extends OpenWnn4T {
     /** A space character */
     private static final char[] SPACE = {' '};
     
@@ -167,7 +168,7 @@ public class OpenWnnEN extends OpenWnn {
         mComposingText = new ComposingText();
         mCandidatesViewManager = new TextCandidatesViewManager(-1);
         mInputViewManager = new DefaultSoftKeyboardEN();
-        mConverterEN = new OpenWnnEngineEN("/data/data/jp.co.omronsoft.openwnn/writableEN.dic");
+        mConverterEN = new OpenWnnEngineEN("/data/data/jp.tadnak25.openwnn4t/writableEN.dic");
         mConverter = mConverterEN;
         mSymbolList = null;
 

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,7 +141,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     public static final int KEYCODE_QWERTY_PINYIN  = -115;
     
     /** OpenWnn instance which hold this software keyboard*/
-    protected OpenWnn      mWnn;
+    protected OpenWnn4T    mWnn;
     
     /** Current keyboard view */
     protected KeyboardView mKeyboardView;
@@ -288,7 +289,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
      *
      * @param parent   OpenWnn using the keyboards.
      */
-    protected void createKeyboards(OpenWnn parent) {
+    protected void createKeyboards(OpenWnn4T parent) {
         /*
          *  Keyboard[# of Languages][portrait/landscape][# of keyboard type]
          *          [shift off/on][max # of key-modes][non-input/input]
@@ -514,7 +515,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
         }
     }
     /** @see jp.co.omronsoft.openwnn.InputViewManager#initView */
-    public View initView(OpenWnn parent, int width, int height) {
+    public View initView(OpenWnn4T parent, int width, int height) {
         mWnn = parent;
         mDisplayMode = 
             (parent.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
@@ -530,7 +531,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(parent);
         String skin = pref.getString("keyboard_skin",
                                      mWnn.getResources().getString(R.string.keyboard_skin_id_default));
-        int id = parent.getResources().getIdentifier(skin, "layout", "jp.co.omronsoft.openwnn");
+        int id = parent.getResources().getIdentifier(skin, "layout", "jp.tadnak25.openwnn4t");
 
         mKeyboardView = (KeyboardView) mWnn.getLayoutInflater().inflate(id, null);
         mKeyboardView.setOnKeyboardActionListener(this);
@@ -631,7 +632,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     }
 
     /** @see jp.co.omronsoft.openwnn.InputViewManager#onUpdateState */
-    public void onUpdateState(OpenWnn parent) {
+    public void onUpdateState(OpenWnn4T parent) {
         try {
             if (parent.mComposingText.size(1) == 0) {
                 if (!mNoInput) {
@@ -667,7 +668,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
                 mVibrator = null;
             }
         } catch (Exception ex) {
-            Log.d("OpenWnn", "NO VIBRATOR");
+            Log.d("OpenWnn4T", "NO VIBRATOR");
         }
 
         /* sound */
@@ -678,7 +679,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
                 mSound = null;
             }
         } catch (Exception ex) {
-            Log.d("OpenWnn", "NO SOUND");
+            Log.d("OpenWnn4T", "NO SOUND");
         }
 
         /* pop-up preview */

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +15,11 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 
-import jp.co.omronsoft.openwnn.EN.OpenWnnEngineEN;
-import jp.co.omronsoft.openwnn.JAJP.*;
+import jp.tadnak25.openwnn4t.EN.OpenWnnEngineEN;
+import jp.tadnak25.openwnn4t.JAJP.*;
 import android.content.SharedPreferences;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -47,7 +48,7 @@ import java.util.regex.Matcher;
  *
  * @author Copyright (C) 2009 OMRON SOFTWARE CO., LTD.  All Rights Reserved.
  */
-public class OpenWnnJAJP extends OpenWnn {
+public class OpenWnnJAJP extends OpenWnn4T {
     /**
      * Mode of the convert engine (Full-width KATAKANA).
      * Use with {@code OpenWnn.CHANGE_MODE} event.
@@ -438,8 +439,8 @@ public class OpenWnnJAJP extends OpenWnn {
         mComposingText = new ComposingText();
         mCandidatesViewManager = new TextCandidatesViewManager(-1);
         mInputViewManager  = new DefaultSoftKeyboardJAJP();
-        mConverter = mConverterJAJP = new OpenWnnEngineJAJP("/data/data/jp.co.omronsoft.openwnn/writableJAJP.dic");
-        mConverterEN = new OpenWnnEngineEN("/data/data/jp.co.omronsoft.openwnn/writableEN.dic");
+        mConverter = mConverterJAJP = new OpenWnnEngineJAJP("/data/data/jp.tadnak25.openwnn4t/writableJAJP.dic");
+        mConverterEN = new OpenWnnEngineEN("/data/data/jp.tadnak25.openwnn4t/writableEN.dic");
         mPreConverter = mPreConverterHiragana = new Romkan();
         mPreConverterFullKatakana = new RomkanFullKatakana();
         mPreConverterHalfKatakana = new RomkanHalfKatakana();

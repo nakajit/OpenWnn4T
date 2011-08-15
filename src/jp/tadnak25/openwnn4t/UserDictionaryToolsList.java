@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -354,7 +355,7 @@ public abstract class UserDictionaryToolsList extends Activity
                 .create();
 
         default:
-            Log.e("OpenWnn", "onCreateDialog : Invaled Get DialogID. ID=" + id);
+            Log.e("OpenWnn4T", "onCreateDialog : Invaled Get DialogID. ID=" + id);
             break;
         }
 

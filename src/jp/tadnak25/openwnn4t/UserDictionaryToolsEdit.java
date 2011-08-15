@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -151,7 +152,7 @@ public abstract class UserDictionaryToolsEdit extends Activity implements View.O
             mBeforeEditWnnWord.candidate = ((TextView)sFocusingPairView).getText().toString();
         } else {
             /* finish if it is unknown request */
-            Log.e("OpenWnn", "onCreate() : Invaled Get Intent. ID=" + intent);
+            Log.e("OpenWnn4T", "onCreate() : Invaled Get Intent. ID=" + intent);
             finish();
             return;
         }
@@ -232,7 +233,7 @@ public abstract class UserDictionaryToolsEdit extends Activity implements View.O
                 break;
 
             default:
-                Log.e("OpenWnn", "onClick: Get Invalid ButtonID. ID=" + v.getId());
+                Log.e("OpenWnn4T", "onClick: Get Invalid ButtonID. ID=" + v.getId());
                 finish();
                 return;
         }
@@ -270,7 +271,7 @@ public abstract class UserDictionaryToolsEdit extends Activity implements View.O
             break;
 
         default:
-            Log.e("OpenWnn", "doSaveAction: Invalid Add Status. Status=" + mRequestState);
+            Log.e("OpenWnn4T", "doSaveAction: Invalid Add Status. Status=" + mRequestState);
             break;
         }
     }
@@ -393,7 +394,7 @@ public abstract class UserDictionaryToolsEdit extends Activity implements View.O
         /* return false if the length of the string exceeds the limit. */
         if ((((TextView)v).getText().length()) > MAX_TEXT_SIZE) {
             showDialog(DIALOG_CONTROL_OVER_MAX_TEXT_SIZE);
-            Log.e("OpenWnn", "inputDataCheck() : over max string length.");
+            Log.e("OpenWnn4T", "inputDataCheck() : over max string length.");
             return false;
         }
 

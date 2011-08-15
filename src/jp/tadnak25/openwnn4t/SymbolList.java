@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,7 +69,7 @@ public class SymbolList implements WnnEngine {
     protected HashMap<String,ArrayList<String>> mSymbols;
 
     /** OpenWnn which has this instance */
-    private OpenWnn mWnn;
+    private OpenWnn4T mWnn;
 
     /** current list of symbols */
     private ArrayList<String> mCurrentList;
@@ -85,7 +86,7 @@ public class SymbolList implements WnnEngine {
      * @param parent  OpenWnn instance which uses this.
      * @param lang    Language ({@code LANG_EN}, {@code LANG_JA} or {@code LANG_ZHCN})
      */
-    public SymbolList(OpenWnn parent, int lang) {
+    public SymbolList(OpenWnn4T parent, int lang) {
         mWnn = parent;
         mSymbols = new HashMap<String, ArrayList<String>>();
 
@@ -157,9 +158,9 @@ public class SymbolList implements WnnEngine {
             }
             xrp.close();
         } catch (XmlPullParserException e) {
-            Log.e("OpenWnn", "Ill-formatted keybaord resource file");
+            Log.e("OpenWnn4T", "Ill-formatted keybaord resource file");
         } catch (IOException e) {
-            Log.e("OpenWnn", "Unable to read keyboard resource file");
+            Log.e("OpenWnn4T", "Unable to read keyboard resource file");
         }
 
         return list;

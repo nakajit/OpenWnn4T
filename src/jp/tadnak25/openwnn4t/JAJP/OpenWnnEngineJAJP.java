@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn.JAJP;
+package jp.tadnak25.openwnn4t.JAJP;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,16 +23,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Arrays;
 
-import jp.co.omronsoft.openwnn.CandidateFilter;
-import jp.co.omronsoft.openwnn.ComposingText;
-import jp.co.omronsoft.openwnn.OpenWnn;
-import jp.co.omronsoft.openwnn.OpenWnnDictionaryImpl;
-import jp.co.omronsoft.openwnn.StrSegmentClause;
-import jp.co.omronsoft.openwnn.WnnClause;
-import jp.co.omronsoft.openwnn.WnnDictionary;
-import jp.co.omronsoft.openwnn.WnnEngine;
-import jp.co.omronsoft.openwnn.WnnSentence;
-import jp.co.omronsoft.openwnn.WnnWord;
+import jp.tadnak25.openwnn4t.CandidateFilter;
+import jp.tadnak25.openwnn4t.ComposingText;
+import jp.tadnak25.openwnn4t.OpenWnn4T;
+import jp.tadnak25.openwnn4t.OpenWnnDictionaryImpl;
+import jp.tadnak25.openwnn4t.StrSegmentClause;
+import jp.tadnak25.openwnn4t.WnnClause;
+import jp.tadnak25.openwnn4t.WnnDictionary;
+import jp.tadnak25.openwnn4t.WnnEngine;
+import jp.tadnak25.openwnn4t.WnnSentence;
+import jp.tadnak25.openwnn4t.WnnWord;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -132,7 +133,7 @@ public class OpenWnnEngineJAJP implements WnnEngine {
     public OpenWnnEngineJAJP(String writableDictionaryName) {
         /* load Japanese dictionary library */
         mDictionaryJP = new OpenWnnDictionaryImpl(
-                "/data/data/jp.co.omronsoft.openwnn/lib/libWnnJpnDic.so",
+                "/data/data/jp.tadnak25.openwnn4t/lib/libWnnJpnDic.so",
                 writableDictionaryName );
         if (!mDictionaryJP.isActive()) {
             mDictionaryJP = new OpenWnnDictionaryImpl(

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn;
+package jp.tadnak25.openwnn4t;
 
 import android.inputmethodservice.InputMethodService;
 import android.view.WindowManager;
@@ -37,7 +38,7 @@ import android.graphics.drawable.*;
  *
  * @author Copyright (C) 2009 OMRON SOFTWARE CO., LTD.  All Rights Reserved.
  */
-public class OpenWnn extends InputMethodService {
+public class OpenWnn4T extends InputMethodService {
 
     /** Candidate view */
     protected CandidatesViewManager  mCandidatesViewManager = null;
@@ -62,7 +63,7 @@ public class OpenWnn extends InputMethodService {
     /**
      * Constructor
      */
-    public OpenWnn() {
+    public OpenWnn4T() {
         super();
     }
 

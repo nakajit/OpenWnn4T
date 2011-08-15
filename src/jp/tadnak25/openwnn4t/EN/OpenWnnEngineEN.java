@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +15,12 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn.EN;
+package jp.tadnak25.openwnn4t.EN;
 
 import java.util.HashMap;
 import java.util.ArrayList;
 
-import jp.co.omronsoft.openwnn.*;
+import jp.tadnak25.openwnn4t.*;
 import android.content.SharedPreferences;
 
 /**
@@ -78,7 +79,7 @@ public class OpenWnnEngineEN implements WnnEngine {
         mOutputNum = 0;
 
         mDictionary = new OpenWnnDictionaryImpl( 
-        		"/data/data/jp.co.omronsoft.openwnn/lib/libWnnEngDic.so",
+			"/data/data/jp.tadnak25.openwnn4t/lib/libWnnEngDic.so",
         		writableDictionaryName);
         if (!mDictionary.isActive()) {
         	mDictionary = new OpenWnnDictionaryImpl(

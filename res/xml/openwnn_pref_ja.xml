@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
  Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ Copyright (C) 2011  NAKAJI Tadayoshi
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -32,7 +33,7 @@
 			android:title="@string/preference_auto_caps_title"
 			android:summary="@string/preference_auto_caps_summary"
 			android:defaultValue="true" />
-    <jp.co.omronsoft.openwnn.JAJP.KeyboardListPreferenceJAJP
+    <jp.tadnak25.openwnn4t.JAJP.KeyboardListPreferenceJAJP
                         android:key="keyboard_skin"
 			android:title="@string/preference_keyboard_skin_title"
 			android:summary="@string/preference_keyboard_skin_summary"
@@ -63,8 +64,8 @@
 		      android:summary="@string/preference_user_dictionary_edit_words_summary_ja"
 		      android:persistent="false">
 	<intent android:action="android.intent.action.MAIN"
-	    android:targetPackage="jp.co.omronsoft.openwnn"
-	    android:targetClass="jp.co.omronsoft.openwnn.JAJP.UserDictionaryToolsListJAJP" />
+	    android:targetPackage="jp.tadnak25.openwnn4t"
+	    android:targetClass="jp.tadnak25.openwnn4t.JAJP.UserDictionaryToolsListJAJP" />
     </PreferenceScreen>
     
     <PreferenceScreen android:key="user_dictionary_edit_words"
@@ -72,11 +73,11 @@
 		      android:summary="@string/preference_user_dictionary_edit_words_summary_en"
 		      android:persistent="false">
 	<intent android:action="android.intent.action.MAIN"
-	    android:targetPackage="jp.co.omronsoft.openwnn"
-	    android:targetClass="jp.co.omronsoft.openwnn.EN.UserDictionaryToolsListEN" />
+	    android:targetPackage="jp.tadnak25.openwnn4t"
+	    android:targetClass="jp.tadnak25.openwnn4t.EN.UserDictionaryToolsListEN" />
     </PreferenceScreen>
 
-    <jp.co.omronsoft.openwnn.JAJP.ClearLearnDictionaryDialogPreferenceJAJP
+    <jp.tadnak25.openwnn4t.JAJP.ClearLearnDictionaryDialogPreferenceJAJP
 		      android:key="clear_learn_dictionary"
 		      android:title="@string/preference_user_dictionary_clear_learning_title"
 		      android:summary="@string/preference_user_dictionary_clear_learning_summary"

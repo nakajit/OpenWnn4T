@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +15,9 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn.JAJP;
+package jp.tadnak25.openwnn4t.JAJP;
 
-import jp.co.omronsoft.openwnn.*;
+import jp.tadnak25.openwnn4t.*;
 import android.view.View;
 import android.view.Window;
 import java.util.Comparator;
@@ -31,9 +32,9 @@ public class UserDictionaryToolsListJAJP extends UserDictionaryToolsList {
      * Constructor
      */
     public UserDictionaryToolsListJAJP() {
-        mListViewName = "jp.co.omronsoft.openwnn.JAJP.UserDictionaryToolsListJAJP";
-        mEditViewName = "jp.co.omronsoft.openwnn.JAJP.UserDictionaryToolsEditJAJP";
-        mPackageName  = "jp.co.omronsoft.openwnn";
+        mListViewName = "jp.tadnak25.openwnn4t.JAJP.UserDictionaryToolsListJAJP";
+        mEditViewName = "jp.tadnak25.openwnn4t.JAJP.UserDictionaryToolsEditJAJP";
+        mPackageName  = "jp.tadnak25.openwnn4t";
     }
 
     /** @see jp.co.omronsoft.openwnn.UserDictionaryToolsList#headerCreate */

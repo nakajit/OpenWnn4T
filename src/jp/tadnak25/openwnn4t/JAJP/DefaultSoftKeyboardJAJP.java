@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn.JAJP;
+package jp.tadnak25.openwnn4t.JAJP;
 
-import jp.co.omronsoft.openwnn.*;
+import jp.tadnak25.openwnn4t.*;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -314,7 +314,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
     }
 
     /** @see jp.co.omronsoft.openwnn.DefaultSoftKeyboard#createKeyboards */
-    @Override protected void createKeyboards(OpenWnn parent) {
+    @Override protected void createKeyboards(OpenWnn4T parent) {
 
         /* Keyboard[# of Languages][portrait/landscape][# of keyboard type][shift off/on][max # of key-modes][noinput/input] */
         mKeyboard = new Keyboard[3][2][4][2][8][2];
@@ -429,7 +429,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
     }
 
      /** @see jp.co.omronsoft.openwnn.DefaultSoftKeyboard#initView */
-     @Override public View initView(OpenWnn parent, int width, int height) {
+     @Override public View initView(OpenWnn4T parent, int width, int height) {
 
         View view = super.initView(parent, width, height);
         changeKeyboard(mKeyboard[mCurrentLanguage][mDisplayMode][mCurrentKeyboardType][mShiftOn][mCurrentKeyMode][0]);
@@ -560,7 +560,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
                 /* Convert the key code to the table index and send the toggle event with the table index */
                 String[][] cycleTable = getCycleTable();
                 if (cycleTable == null) {
-                    Log.e("OpenWnn", "not founds cycle table");
+                    Log.e("OpenWnn4T", "not founds cycle table");
                 } else {
                     int index = getTableIndex(primaryCode);
                     mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.TOGGLE_CHAR, cycleTable[index]));
@@ -580,7 +580,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
                     /* Processing to toggle Dakuten, Handakuten, and capital */
                     HashMap replaceTable = getReplaceTable();
                     if (replaceTable == null) {
-                        Log.e("OpenWnn", "not founds replace table");
+                        Log.e("OpenWnn4T", "not founds replace table");
                     } else {
                         mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.REPLACE_CHAR, replaceTable));
                         mPrevInputKeyCode = primaryCode;
@@ -766,7 +766,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
     }
 
     /** @see jp.co.omronsoft.openwnn.DefaultSoftKeyboard#onUpdateState */
-    @Override public void onUpdateState(OpenWnn parent) {
+    @Override public void onUpdateState(OpenWnn4T parent) {
         super.onUpdateState(parent);
         if (!mCapsLock) {
             setShiftByEditorInfo();
@@ -834,7 +834,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
      * <br>
      * @param parent  The context
      */
-    private void createKeyboardsPortrait(OpenWnn parent) {
+    private void createKeyboardsPortrait(OpenWnn4T parent) {
         Keyboard[][] keyList;
         /* qwerty shift_off (portrait) */
         keyList = mKeyboard[LANG_JA][PORTRAIT][KEYBOARD_QWERTY][KEYBOARD_SHIFT_OFF];
@@ -902,7 +902,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
      * <br>
      * @param parent  The context
      */
-    private void createKeyboardsLandscape(OpenWnn parent) {
+    private void createKeyboardsLandscape(OpenWnn4T parent) {
     	/*
         Keyboard[][] keyList;
         */

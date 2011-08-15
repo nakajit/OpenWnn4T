@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008,2009  OMRON SOFTWARE Co., Ltd.
+ * Copyright (C) 2011  NAKAJI Tadayoshi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +15,9 @@
  * limitations under the License.
  */
 
-package jp.co.omronsoft.openwnn.EN;
+package jp.tadnak25.openwnn4t.EN;
 
-import jp.co.omronsoft.openwnn.*;
+import jp.tadnak25.openwnn4t.*;
 import android.content.SharedPreferences;
 import android.inputmethodservice.Keyboard;
 import android.view.KeyEvent;
@@ -68,7 +69,7 @@ public class DefaultSoftKeyboardEN extends DefaultSoftKeyboard {
     }
 
     /** @see jp.co.omronsoft.openwnn.DefaultSoftKeyboard#createKeyboards */
-    @Override protected void createKeyboards(OpenWnn parent) {
+    @Override protected void createKeyboards(OpenWnn4T parent) {
         mKeyboard = new Keyboard[3][2][4][2][7][2];
 		
         Keyboard[][] keyList;
@@ -122,7 +123,7 @@ public class DefaultSoftKeyboardEN extends DefaultSoftKeyboard {
      * from DefaultSoftKeyboard
      ***********************************************************************/
     /** @see jp.co.omronsoft.openwnn.DefaultSoftKeyboard#initView */
-    @Override public View initView(OpenWnn parent, int width, int height) {
+    @Override public View initView(OpenWnn4T parent, int width, int height) {
         View view = super.initView(parent, width, height);
 	
     	/* default setting */
