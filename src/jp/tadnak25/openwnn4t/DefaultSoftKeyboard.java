@@ -108,7 +108,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     
     /* for Qwerty keyboard */
     /** Qwerty keyboard [DEL] */
-    public static final int KEYCODE_QWERTY_BACKSPACE = -100;
+    public static final int KEYCODE_QWERTY_BACKSPACE = Keyboard.KEYCODE_DELETE;
     /** Qwerty keyboard [ENTER] */
     public static final int KEYCODE_QWERTY_ENTER = -101;
     /** Qwerty keyboard [SHIFT] */
@@ -539,7 +539,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
 
         mMainView = (ViewGroup) parent.getLayoutInflater().inflate(R.layout.keyboard_default_main, null);
         mSubView = (ViewGroup) parent.getLayoutInflater().inflate(R.layout.keyboard_default_sub, null);
-        if (mDisplayMode == LANDSCAPE || !mHardKeyboardHidden) { 
+        if ( /* mDisplayMode == LANDSCAPE || */ !mHardKeyboardHidden) {
             mMainView.addView(mSubView);
         } else if (mKeyboardView != null) {
             mMainView.addView(mKeyboardView);

@@ -898,10 +898,10 @@ public class OpenWnnJAJP extends OpenWnn4T {
     }
 
     /** @see jp.co.omronsoft.openwnn.OpenWnn#onEvaluateFullscreenMode */
-    @Override public boolean onEvaluateFullscreenMode() {
+//  @Override public boolean onEvaluateFullscreenMode() {
         /* never use full-screen mode */
-        return false;
-    }
+//      return false;
+//  }
 
     /** @see jp.co.omronsoft.openwnn.OpenWnn#onEvaluateInputViewShown */
     @Override public boolean onEvaluateInputViewShown() {

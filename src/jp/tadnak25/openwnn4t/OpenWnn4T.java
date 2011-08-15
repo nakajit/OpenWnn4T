@@ -197,6 +197,18 @@ public class OpenWnn4T extends InputMethodService {
         outInsets.contentTopInsets = outInsets.visibleTopInsets;
     }
 
+    /** @see android.inputmethodservice.InputMethodService#onEvaluateFullscreenMode */
+    @Override public boolean onEvaluateFullscreenMode() {
+        int screenSize = getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK;
+        // If the display is xlarge size, don't go to fullscreen mode
+        if (screenSize == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+            return false;
+        } else {
+            return super.onEvaluateFullscreenMode();
+        }
+    }
+
 
     /**********************************************************************
      * OpenWnn

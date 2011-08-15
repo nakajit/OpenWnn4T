@@ -1,4 +1,39 @@
 -------------------------------------------------------------------------------
+ OpenWnn QWERTY README
+  Version 1.3.5.1.0
+   (C) NAKAJI Tadayoshi 2011 All Rights Reserved.
+-------------------------------------------------------------------------------
+
+1. About OpenWnn QWERTY
+  OpenWnn QWERTY is a OpenWnn with specialized QWERTY for Tablet.
+  This project is called OpenWnn4T.
+
+2. File constitution
+
+    res/                                      IME resource (XML, PNG)
+        values-land/                          | add
+            *.xml                             |
+        values-xlarge/                        | add
+            *.xml                             |
+
+    src/                                      IME source code (Java)
+        jp/                                   |
+            co/                               | delete
+                omronsoft/                    | delete
+                    openwnn/                  | move to openwnn4t's root
+            tadnak25/                         | add
+                openwnn4t/                    |
+                    *.java                    |
+                    EN/                       |
+                        *.java                |
+                    JAJP/                     |
+                        *.java                |
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
                               OpenWnn Japnese README
 
                                    Version 1.3.5

@@ -376,9 +376,9 @@ public class OpenWnnEN extends OpenWnn4T {
     }
 
     /** @see jp.co.omronsoft.openwnn.OpenWnn#onEvaluateFullscreenMode */
-    @Override public boolean onEvaluateFullscreenMode() {
-        return false;
-    }
+//  @Override public boolean onEvaluateFullscreenMode() {
+//      return false;
+//  }
 
     /** @see jp.co.omronsoft.openwnn.OpenWnn#onEvaluateInputViewShown */
     @Override public boolean onEvaluateInputViewShown() {
