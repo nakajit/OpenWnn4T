@@ -12,6 +12,8 @@ LOCAL_JNI_SHARED_LIBRARIES := \
 
 LOCAL_AAPT_FLAGS += -c hdpi
 
+LOCAL_CERTIFICATE := private
+
 include $(BUILD_PACKAGE)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))

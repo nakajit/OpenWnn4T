@@ -10,6 +10,9 @@
 
 2. File constitution
 
+    release/                                  Android Market resource
+        make_private_key.sh                   | key generator
+
     res/                                      IME resource (XML, PNG)
         values-land/                          | add
             *.xml                             |
