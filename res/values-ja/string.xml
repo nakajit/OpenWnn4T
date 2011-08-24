@@ -104,13 +104,13 @@
 
   <!-- IME dependency -->
     <!-- OpenWnn English -->
-    <string name="openwnn_english_copyright">Ver.1.3.5.1.0\nオムロン ソフトウェア(株) / NAKAJI Tadayoshi</string>
+    <string name="openwnn_english_copyright">Ver.1.3.5.1.1\nオムロン ソフトウェア(株) / NAKAJI Tadayoshi</string>
 
     <!-- OpenWnn Japanese -->
-    <string name="openwnn_japanese_copyright">Ver.1.3.5.1.0\nオムロン ソフトウェア(株) / NAKAJI Tadayoshi</string>
+    <string name="openwnn_japanese_copyright">Ver.1.3.5.1.1\nオムロン ソフトウェア(株) / NAKAJI Tadayoshi</string>
 
     <!-- OpenWnn Chinese -->
-    <string name="openwnn_china_copyright">Ver.1.3.5.1.0\nオムロン ソフトウェア(株) / NAKAJI Tadayoshi</string>
+    <string name="openwnn_china_copyright">Ver.1.3.5.1.1\nオムロン ソフトウェア(株) / NAKAJI Tadayoshi</string>
 
   <!-- Candidate Delete -->
       <string name="button_candidate_select">選　択</string>
