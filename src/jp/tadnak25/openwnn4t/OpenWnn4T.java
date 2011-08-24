@@ -204,11 +204,13 @@ public class OpenWnn4T extends InputMethodService {
         // If the display is xlarge size, don't go to fullscreen mode
         if (screenSize == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
             return false;
+        } else if (mCandidatesViewManager != null &&
+                mCandidatesViewManager.getViewType() == CandidatesViewManager.VIEW_TYPE_FULL) {
+            return false;
         } else {
             return super.onEvaluateFullscreenMode();
         }
     }
-
 
     /**********************************************************************
      * OpenWnn

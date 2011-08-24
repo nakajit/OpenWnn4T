@@ -429,6 +429,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
     private boolean setViewLayout(int type) {
         mViewType = type;
         setViewScaleUp(false, null);
+        mWnn.updateFullscreenMode();
 
         switch (type) {
         case CandidatesViewManager.VIEW_TYPE_CLOSE:
