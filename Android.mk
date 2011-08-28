@@ -8,7 +8,7 @@ LOCAL_SRC_FILES := $(call all-subdir-java-files)
 LOCAL_PACKAGE_NAME := OpenWnn4T
 
 LOCAL_JNI_SHARED_LIBRARIES := \
-	 libWnnEngDic libWnnJpnDic libwnndict
+	 libWnnEngDic4T libWnnJpnDic4T libwnndict4T
 
 LOCAL_AAPT_FLAGS += -c hdpi
 

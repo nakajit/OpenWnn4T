@@ -79,11 +79,11 @@ public class OpenWnnEngineEN implements WnnEngine {
         mOutputNum = 0;
 
         mDictionary = new OpenWnnDictionaryImpl( 
-			"/data/data/jp.tadnak25.openwnn4t/lib/libWnnEngDic.so",
+			"/data/data/jp.tadnak25.openwnn4t/lib/libWnnEngDic4T.so",
         		writableDictionaryName);
         if (!mDictionary.isActive()) {
         	mDictionary = new OpenWnnDictionaryImpl(
-        			"/system/lib/libWnnEngDic.so",
+        			"/system/lib/libWnnEngDic4T.so",
         			writableDictionaryName);
         }
         mDictionary.clearDictionary( );

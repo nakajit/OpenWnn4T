@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_MODULE := libwnndict
+LOCAL_MODULE := libwnndict4T
 
 LOCAL_SRC_FILES := \
 	OpenWnnDictionaryImplJni.c \

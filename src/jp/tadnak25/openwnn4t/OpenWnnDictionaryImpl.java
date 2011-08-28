@@ -36,7 +36,7 @@ public class OpenWnnDictionaryImpl implements WnnDictionary {
      */
     static {
         /* Load the dictionary search library */ 
-        System.loadLibrary( "wnndict" );
+        System.loadLibrary( "wnndict4T" );
     }
 
     /*

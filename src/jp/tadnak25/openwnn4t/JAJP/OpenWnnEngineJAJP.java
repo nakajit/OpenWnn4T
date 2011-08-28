@@ -133,11 +133,11 @@ public class OpenWnnEngineJAJP implements WnnEngine {
     public OpenWnnEngineJAJP(String writableDictionaryName) {
         /* load Japanese dictionary library */
         mDictionaryJP = new OpenWnnDictionaryImpl(
-                "/data/data/jp.tadnak25.openwnn4t/lib/libWnnJpnDic.so",
+                "/data/data/jp.tadnak25.openwnn4t/lib/libWnnJpnDic4T.so",
                 writableDictionaryName );
         if (!mDictionaryJP.isActive()) {
             mDictionaryJP = new OpenWnnDictionaryImpl(
-                    "/system/lib/libWnnJpnDic.so",
+                    "/system/lib/libWnnJpnDic4T.so",
                     writableDictionaryName );
         }
 

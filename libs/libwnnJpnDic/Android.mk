@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_MODULE := libWnnJpnDic
+LOCAL_MODULE := libWnnJpnDic4T
 
 LOCAL_SRC_FILES := \
 	WnnJpnDic.c
