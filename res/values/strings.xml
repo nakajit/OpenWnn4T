@@ -41,6 +41,23 @@
     <string name="preference_keyboard_simple">Simple</string>
     <string name="preference_keyboard_metal">Metal</string>
 
+    <string name="preference_5lines_title"> Full keyboard </string>
+    <string name="preference_5lines_summary"> Enable large keyboard. </string>
+
+    <string name="preference_keyboard_locale_title"> Select keyboard locale </string>
+    <string name="preference_keyboard_locale_jp_name"> JP full keyboard </string>
+    <string name="preference_keyboard_locale_us_name"> US full keyboard </string>
+    <string-array name="preference_keyboard_locale" translatable="false">
+        <item>@string/preference_keyboard_locale_jp_name</item>
+        <item>@string/preference_keyboard_locale_us_name</item>
+    </string-array>
+    <string name="preference_keyboard_locale_jp" translatable="false">0</string>
+    <string name="preference_keyboard_locale_us" translatable="false">1</string>
+    <string-array name="preference_keyboard_locale_values" translatable="false">
+        <item>@string/preference_keyboard_locale_jp</item>
+        <item>@string/preference_keyboard_locale_us</item>
+    </string-array>
+
     <string name="preference_conversion_menu">Conversion</string>
 
     <string name="preference_prediction_title">Word Prediction</string>
@@ -136,6 +153,13 @@
     <string name="key_left_arrow">↤</string>
     <string name="key_right_arrow">↦</string>
     <string name="key_rightward_tab">⇥</string>
+    <string name="key_erase_left">⇦</string>
+    <string name="key_caps_lock">⇪</string>
+    <string name="key_return">↵</string>
+    <string name="key_open_box">＿</string>
+    <string name="key_left_pointing">◀</string>
+    <string name="key_right_pointing">▶</string>
+    <string name="key_symbol">:-)</string>
     <string name="key_space">スペース</string>
     <string name="key_space_conv">スペース/変換</string>
     <string name="key_change_mode">文字</string>

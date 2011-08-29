@@ -40,6 +40,17 @@
 			android:entries="@array/keyboard_skin"
 			android:entryValues="@array/keyboard_skin_id"
 			android:defaultValue="keyboard_android_default" />
+    <CheckBoxPreference android:key="5lines"
+            android:title="@string/preference_5lines_title"
+            android:summary="@string/preference_5lines_summary"
+            android:defaultValue="false" />
+    <ListPreference android:key="keyboard_locale"
+            android:title="@string/preference_keyboard_locale_title"
+            android:persistent="true"
+            android:entries="@array/preference_keyboard_locale"
+            android:entryValues="@array/preference_keyboard_locale_values"
+            android:defaultValue="@string/preference_keyboard_locale_jp"
+            android:dependency="5lines" />
   </PreferenceCategory>
     
   <PreferenceCategory android:title="@string/preference_conversion_menu">

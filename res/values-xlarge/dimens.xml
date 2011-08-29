@@ -16,5 +16,6 @@
 -->
 <resources>
     <dimen name="key_height">80dip</dimen>
+    <dimen name="key_height_5lines">72dip</dimen>
     <dimen name="candidate_font_size">30sp</dimen>
 </resources>

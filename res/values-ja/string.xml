@@ -41,6 +41,13 @@
     <string name="preference_keyboard_simple">シンプル</string>
     <string name="preference_keyboard_metal">メタリック</string>
 
+    <string name="preference_5lines_title">フルキーボード</string>
+    <string name="preference_5lines_summary">フルキーボードを有効にする</string>
+
+    <string name="preference_keyboard_locale_title">キーボード言語</string>
+    <string name="preference_keyboard_locale_jp_name">日本語フルキーボード</string>
+    <string name="preference_keyboard_locale_us_name">英語フルキーボード</string>
+
     <string name="preference_conversion_menu">変換設定</string>
 
     <string name="preference_prediction_title">予測変換</string>

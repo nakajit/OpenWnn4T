@@ -17,15 +17,25 @@
 
 package jp.tadnak25.openwnn4t;
 
+import android.content.*;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
+import android.preference.*;
 
 /**
  * The control panel preference class for Japanese IME.
  *
  * @author Copyright (C) 2009 OMRON SOFTWARE CO., LTD.  All Rights Reserved.
  */
-public class OpenWnnControlPanelJAJP extends PreferenceActivity {
+public class OpenWnnControlPanelJAJP extends PreferenceActivity
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private static final String PREF_5LINES_KEY = "5lines";
+    private static final String PREF_SETTINGS_KEY = "keyboard_locale";
+    public static final int PREF_KEYBOARD_LOCALE_JP = R.string.preference_keyboard_locale_jp;
+    public static final int PREF_KEYBOARD_LOCALE_US = R.string.preference_keyboard_locale_us;
+    public static final int PREF_KEYBOARD_LOCALE_DEFAULT = PREF_KEYBOARD_LOCALE_JP;
+
+    private ListPreference mSettingsKeyPreference;
 
     /** @see android.preference.PreferenceActivity#onCreate */
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -35,5 +45,53 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity {
         }
 
         addPreferencesFromResource(R.xml.openwnn_pref_ja);
+
+        mSettingsKeyPreference = (ListPreference) findPreference(PREF_SETTINGS_KEY);
+        SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
+        prefs.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    /** @see android.preference.PreferenceActivity#onResume */
+    @Override public void onResume() {
+        super.onResume();
+        updateSettingsKeySummary();
+    }
+
+    /** @see android.preference.PreferenceActivity#onDestroy */
+    @Override protected void onDestroy() {
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(
+                this);
+        super.onDestroy();
+    }
+
+    /** @see android.preference.SharedPreferences.OnSharedPreferenceChangeListener#onSharedPreferenceChanged */
+    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+        updateSettingsKeySummary();
+    }
+
+    private void updateSettingsKeySummary() {
+        mSettingsKeyPreference.setSummary(
+                getResources().getStringArray(R.array.preference_keyboard_locale)
+                [mSettingsKeyPreference.findIndexOfValue(mSettingsKeyPreference.getValue())]);
+    }
+
+    /**
+     * load 5lines preferences
+     * <br>
+     * @param context  The context
+     */
+    public static boolean is5Lines(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getBoolean(PREF_5LINES_KEY, false);
+    }
+
+    /**
+     * load keyboard locale preferences
+     * <br>
+     * @param context  The context
+     */
+    public static String getKeyboardLocale(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
     }
 }
