@@ -48,6 +48,9 @@
     <string name="preference_keyboard_locale_jp_name">日本語フルキーボード</string>
     <string name="preference_keyboard_locale_us_name">英語フルキーボード</string>
 
+    <string name="preference_use_hardkeyboard_title">物理キーボード利用</string>
+    <string name="preference_use_hardkeyboard_summary">常にソフトキーボードを非表示にする</string>
+
     <string name="preference_conversion_menu">変換設定</string>
 
     <string name="preference_prediction_title">予測変換</string>

@@ -539,7 +539,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
 
         mMainView = (ViewGroup) parent.getLayoutInflater().inflate(R.layout.keyboard_default_main, null);
         mSubView = (ViewGroup) parent.getLayoutInflater().inflate(R.layout.keyboard_default_sub, null);
-        if ( /* mDisplayMode == LANDSCAPE || */ !mHardKeyboardHidden) {
+        if ( OpenWnnControlPanelJAJP.isUseHwKeyboard(parent) || !mHardKeyboardHidden ) {
             mMainView.addView(mSubView);
         } else if (mKeyboardView != null) {
             mMainView.addView(mKeyboardView);

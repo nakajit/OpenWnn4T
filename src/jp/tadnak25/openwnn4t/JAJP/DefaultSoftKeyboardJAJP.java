@@ -24,6 +24,7 @@ import android.view.inputmethod.InputConnection;
 import android.inputmethodservice.Keyboard;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.content.SharedPreferences;
 import java.util.HashMap;
 import java.util.Locale;
@@ -431,6 +432,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         }
         
         setStatusIcon();
+        setImeIndicator();
         changeKeyboard(kbd);
         mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.CHANGE_MODE, mode));
     }
@@ -769,6 +771,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         }
 
         setStatusIcon();
+        setImeIndicator();
         setShiftByEditorInfo();
     }
 
@@ -1176,6 +1179,43 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         }
 
         mWnn.showStatusIcon(icon);
+    }
+
+    /**
+     * Set the IME indicator that is appropriate in current mode
+     */
+    private void setImeIndicator() {
+        int text = 0;
+        TextView imeIndicator = (TextView)mSubView.findViewById(R.id.key_mode);
+
+        switch (mCurrentKeyMode) {
+        case KEYMODE_JA_FULL_HIRAGANA:
+            text = R.string.key_12key_switch_full_hiragana;
+            break;
+        case KEYMODE_JA_FULL_KATAKANA:
+            text = R.string.key_12key_switch_full_katakana;
+            break;
+        case KEYMODE_JA_FULL_ALPHABET:
+            text = R.string.key_12key_switch_full_alphabet;
+            break;
+        case KEYMODE_JA_FULL_NUMBER:
+            text = R.string.key_12key_switch_full_number;
+            break;
+        case KEYMODE_JA_HALF_KATAKANA:
+            text = R.string.key_12key_switch_half_katakana;
+            break;
+        case KEYMODE_JA_HALF_ALPHABET:
+            text = R.string.key_12key_switch_half_alphabet;
+            break;
+        case KEYMODE_JA_HALF_NUMBER:
+        case KEYMODE_JA_HALF_PHONE:
+            text = R.string.key_12key_switch_half_number;
+            break;
+        default:
+            break;
+        }
+
+        imeIndicator.setText(mWnn.getResources().getString(text));
     }
 
     /**

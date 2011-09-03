@@ -31,6 +31,7 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
 
     private static final String PREF_5LINES_KEY = "5lines";
     private static final String PREF_SETTINGS_KEY = "keyboard_locale";
+    private static final String PREF_USE_HARDKEYBOARD_KEY = "use_hardkeyboard";
     public static final int PREF_KEYBOARD_LOCALE_JP = R.string.preference_keyboard_locale_jp;
     public static final int PREF_KEYBOARD_LOCALE_US = R.string.preference_keyboard_locale_us;
     public static final int PREF_KEYBOARD_LOCALE_DEFAULT = PREF_KEYBOARD_LOCALE_JP;
@@ -93,5 +94,15 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     public static String getKeyboardLocale(Context context) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         return pref.getString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
+    }
+
+    /**
+     * load use hardware keyboard preferences
+     * <br>
+     * @param context  The context
+     */
+    public static boolean isUseHwKeyboard(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getBoolean(PREF_USE_HARDKEYBOARD_KEY, false);
     }
 }
