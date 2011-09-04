@@ -117,20 +117,20 @@
 
   <!-- IME dependency -->
     <!-- OpenWnn English -->
-    <string name="openwnn_english_copyright">Ver.1.3.5.2.0\nOMRON SOFTWARE Co., Ltd. / NAKAJI Tadayoshi</string>
+    <string name="openwnn_english_copyright">Ver.1.3.5.2.1\nOMRON SOFTWARE Co., Ltd. / NAKAJI Tadayoshi</string>
     <string name="openwnn_english">OpenWnn English</string>
     <string name="openwnn_english_system_dictionary">/data/data/jp.tadnak25.openwnn4t/lib/libWnnEngDic.so</string>
     <string name="openwnn_english_writable_dictionary">/data/data/jp.tadnak25.openwnn4t/writableEN.dic</string>
     <string name="en_word_separators">.,;:!?</string>
 
     <!-- OpenWnn Japanese -->
-    <string name="openwnn_japanese_copyright">Ver.1.3.5.2.0\nOMRON SOFTWARE Co., Ltd. / NAKAJI Tadayoshi</string>
+    <string name="openwnn_japanese_copyright">Ver.1.3.5.2.1\nOMRON SOFTWARE Co., Ltd. / NAKAJI Tadayoshi</string>
     <string name="openwnn_japanese">OpenWnn QWERTY</string>
     <string name="openwnn_japanese_system_dictionary">/data/data/jp.tadnak25.openwnn4t/lib/libWnnJpnDic.so</string>
     <string name="openwnn_japanese_writable_dictionary">/data/data/jp.tadnak25.openwnn4t/writableJAJP.dic</string>
 
     <!-- OpenWnn Chinese -->
-    <string name="openwnn_china_copyright">Ver.1.3.5.2.0\nOMRON SOFTWARE Co., Ltd. / NAKAJI Tadayoshi</string>
+    <string name="openwnn_china_copyright">Ver.1.3.5.2.1\nOMRON SOFTWARE Co., Ltd. / NAKAJI Tadayoshi</string>
     <string name="openwnn_china">OpenWnn Chinese</string>
     <string name="openwnn_china_system_dictionary">/data/data/jp.tadnak25.openwnn4t/lib/libWnnZHCNDic.so</string>
 <!-- After Config Change -->
