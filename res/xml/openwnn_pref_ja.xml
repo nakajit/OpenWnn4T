@@ -48,8 +48,8 @@
             android:title="@string/preference_keyboard_locale_title"
             android:persistent="true"
             android:entries="@array/preference_keyboard_locale"
-            android:entryValues="@array/preference_keyboard_locale_values"
-            android:defaultValue="@string/preference_keyboard_locale_jp"
+            android:entryValues="@array/preference_keyboard_locale_id"
+            android:defaultValue="preference_keyboard_locale_jp"
             android:dependency="5lines" />
     <CheckBoxPreference android:key="use_hardkeyboard"
             android:title="@string/preference_use_hardkeyboard_title"

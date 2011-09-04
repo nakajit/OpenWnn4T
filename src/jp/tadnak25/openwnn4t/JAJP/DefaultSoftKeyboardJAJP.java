@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.List;
@@ -1008,16 +1009,13 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
      */
     private void createKeyboards5Lines(OpenWnn4T parent, int direction) {
         Keyboard[][] keyList;
-        int xmlHiragana = R.xml.keyboard_qwerty_jp_5l;
-        int xmlAlphabet = R.xml.keyboard_qwerty_jp_5l_alphabet;
-        int xmlFullAlphabet = R.xml.keyboard_qwerty_jp_5l_full_alphabet;
 
         String locale = OpenWnnControlPanelJAJP.getKeyboardLocale(parent);
-        if (parent.getResources().getString(OpenWnnControlPanelJAJP.PREF_KEYBOARD_LOCALE_US).equals(locale)) {
-            xmlHiragana = R.xml.keyboard_qwerty_us_5l;
-            xmlAlphabet = R.xml.keyboard_qwerty_us_5l_alphabet;
-            xmlFullAlphabet = R.xml.keyboard_qwerty_us_5l_full_alphabet;
-        }
+        Resources res = parent.getResources();
+        String[] keyTable = res.getStringArray(res.getIdentifier(locale, "array", "jp.tadnak25.openwnn4t"));
+        int xmlHiragana     = res.getIdentifier(keyTable[0], "xml", "jp.tadnak25.openwnn4t");
+        int xmlAlphabet     = res.getIdentifier(keyTable[1], "xml", "jp.tadnak25.openwnn4t");
+        int xmlFullAlphabet = res.getIdentifier(keyTable[2], "xml", "jp.tadnak25.openwnn4t");
 
         /* qwerty shift_off */
         keyList = mKeyboard[LANG_JA][direction][KEYBOARD_QWERTY][KEYBOARD_SHIFT_OFF];

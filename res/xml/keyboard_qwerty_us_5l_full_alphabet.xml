@@ -195,7 +195,7 @@
     </Row>
 
     <Row android:keyboardMode="@+id/mode_normal" android:rowEdgeFlags="bottom">
-        <Key android:codes="-230" android:keyLabel="Ａ"
+        <Key android:codes="-230" android:keyLabel="@string/key_12key_switch_full_alphabet"
              android:popupKeyboard="@xml/keyboard_switch_key_qwerty_jp"
              android:keyEdgeFlags="left" />
         <Key android:codes="-218" android:keyLabel="@string/key_left_pointing"
@@ -215,7 +215,7 @@
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" android:rowEdgeFlags="bottom">
-        <Key android:codes="-230" android:keyLabel="Ａ"
+        <Key android:codes="-230" android:keyLabel="@string/key_12key_switch_full_alphabet"
              android:popupKeyboard="@xml/keyboard_switch_key_qwerty_jp"
              android:keyEdgeFlags="left" />
         <Key android:codes="-218" android:keyLabel="@string/key_left_pointing"

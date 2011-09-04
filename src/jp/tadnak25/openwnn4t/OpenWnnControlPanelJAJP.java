@@ -32,9 +32,7 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     private static final String PREF_5LINES_KEY = "5lines";
     private static final String PREF_SETTINGS_KEY = "keyboard_locale";
     private static final String PREF_USE_HARDKEYBOARD_KEY = "use_hardkeyboard";
-    public static final int PREF_KEYBOARD_LOCALE_JP = R.string.preference_keyboard_locale_jp;
-    public static final int PREF_KEYBOARD_LOCALE_US = R.string.preference_keyboard_locale_us;
-    public static final int PREF_KEYBOARD_LOCALE_DEFAULT = PREF_KEYBOARD_LOCALE_JP;
+    public static final int PREF_KEYBOARD_LOCALE_DEFAULT = R.string.preference_keyboard_locale_default;
 
     private ListPreference mSettingsKeyPreference;
 
@@ -71,6 +69,9 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     }
 
     private void updateSettingsKeySummary() {
+        if (mSettingsKeyPreference.getValue().equals("0") || mSettingsKeyPreference.getValue().equals("1")) {
+            mSettingsKeyPreference.setValue(getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
+        }
         mSettingsKeyPreference.setSummary(
                 getResources().getStringArray(R.array.preference_keyboard_locale)
                 [mSettingsKeyPreference.findIndexOfValue(mSettingsKeyPreference.getValue())]);
