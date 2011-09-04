@@ -32,9 +32,11 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     private static final String PREF_5LINES_KEY = "5lines";
     private static final String PREF_SETTINGS_KEY = "keyboard_locale";
     private static final String PREF_USE_HARDKEYBOARD_KEY = "use_hardkeyboard";
+    private static final String PREF_SKINS_KEY = "keyboard_skin";
     public static final int PREF_KEYBOARD_LOCALE_DEFAULT = R.string.preference_keyboard_locale_default;
 
     private ListPreference mSettingsKeyPreference;
+    private ListPreference mSkinsPreference;
 
     /** @see android.preference.PreferenceActivity#onCreate */
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         addPreferencesFromResource(R.xml.openwnn_pref_ja);
 
         mSettingsKeyPreference = (ListPreference) findPreference(PREF_SETTINGS_KEY);
+        mSkinsPreference = (ListPreference) findPreference(PREF_SKINS_KEY);
         SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
@@ -75,6 +78,9 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         mSettingsKeyPreference.setSummary(
                 getResources().getStringArray(R.array.preference_keyboard_locale)
                 [mSettingsKeyPreference.findIndexOfValue(mSettingsKeyPreference.getValue())]);
+        mSkinsPreference.setSummary(
+                getResources().getStringArray(R.array.keyboard_skin)
+                [mSkinsPreference.findIndexOfValue(mSkinsPreference.getValue())]);
     }
 
     /**
