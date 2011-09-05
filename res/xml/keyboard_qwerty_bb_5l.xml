@@ -126,14 +126,11 @@
              android:isRepeatable="true" android:keyEdgeFlags="left" />
         <Key android:codes="-230" android:keyLabel="@string/key_12key_switch_full_hiragana"
              android:popupKeyboard="@xml/keyboard_switch_key_qwerty_jp" />
-        <Key android:keyLabel="-"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="_=+±%&amp;" />
+        <Key android:keyLabel="-" />
         <Key android:codes="0x3000" android:keyLabel="@string/key_open_box"
              android:keyWidth="30%p" android:isRepeatable="true" />
-        <Key android:keyLabel=","
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters=";" />
-        <Key android:keyLabel="."
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters=":" />
+        <Key android:keyLabel="," />
+        <Key android:keyLabel="." />
         <Key android:codes="-106" android:keyLabel="@string/key_symbol" />
         <Key android:codes="-217" android:keyLabel="@string/key_right_pointing"
              android:isRepeatable="true" android:keyEdgeFlags="right" />
@@ -148,10 +145,10 @@
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ⁿ∅" />
         <Key android:codes="0x3000" android:keyLabel="@string/key_open_box"
              android:keyWidth="30%p" android:isRepeatable="true" />
-        <Key android:keyLabel="/"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="\?¿\\|" />
         <Key android:keyLabel="`"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="~^↑↓←→" />
+        <Key android:keyLabel="="
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="≠≈∞%‰&amp;\\|" />
         <Key android:codes="-106" android:keyLabel="@string/key_symbol" />
         <Key android:codes="-217" android:keyLabel="@string/key_right_pointing"
              android:isRepeatable="true" android:keyEdgeFlags="right" />

@@ -75,7 +75,8 @@
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="≤«‹" />
         <Key android:keyLabel="&gt;"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="≥»›" />
-        <Key android:keyLabel="=" />
+        <Key android:keyLabel="="
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="≠≈∞" />
         <Key android:keyLabel=":" />
         <Key android:keyLabel=";" />
         <Key android:keyLabel="," />

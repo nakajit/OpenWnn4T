@@ -64,7 +64,8 @@
         <Key android:keyLabel="(" />
         <Key android:keyLabel=")" />
         <Key android:keyLabel=" " />
-        <Key android:keyLabel="=" />
+        <Key android:keyLabel="="
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="≠≈∞" />
         <Key android:keyLabel="~" />
         <Key android:codes="@integer/key_delete" android:keyLabel="@string/key_erase_left"
              android:keyWidth="10%p" android:isRepeatable="true" android:keyEdgeFlags="right" />

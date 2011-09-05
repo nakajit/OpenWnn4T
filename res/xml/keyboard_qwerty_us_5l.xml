@@ -189,7 +189,8 @@
              android:keyWidth="30%p" android:isRepeatable="true" />
         <Key android:keyLabel="&apos;"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="‘’" />
-        <Key android:keyLabel="=" />
+        <Key android:keyLabel="="
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="≠≈∞" />
         <Key android:keyLabel="\\"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="¥" />
         <Key android:codes="-106" android:keyLabel="@string/key_symbol"
