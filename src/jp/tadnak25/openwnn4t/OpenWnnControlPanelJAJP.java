@@ -100,6 +100,10 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
      */
     public static String getKeyboardLocale(Context context) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        String locale = pref.getString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
+        if (locale.equals("0") || locale.equals("1")) {
+            pref.edit().putString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
+        }
         return pref.getString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
     }
 
