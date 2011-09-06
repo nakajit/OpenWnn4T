@@ -944,9 +944,11 @@ public class OpenWnnJAJP extends OpenWnn4T {
         /* keys which produce a glyph */
         if (ev.isPrintingKey()) {
             /* do nothing if the character is not able to display or the character is dead key */
-            if ((mHardShift > 0 && mHardAlt > 0) ||
-                (ev.isAltPressed() && ev.isShiftPressed())) {
-                int charCode = ev.getUnicodeChar(MetaKeyKeyListener.META_SHIFT_ON | MetaKeyKeyListener.META_ALT_ON);
+            if ((mHardShift > 0 || mHardAlt > 0) ||
+                (ev.isAltPressed() || ev.isShiftPressed())) {
+                int metaShift = (mHardShift > 0 || ev.isShiftPressed())? MetaKeyKeyListener.META_SHIFT_ON: 0;
+                int metaAlt = (mHardAlt > 0 || ev.isAltPressed())? MetaKeyKeyListener.META_ALT_ON: 0;
+                int charCode = ev.getUnicodeChar(metaShift | metaAlt);
                 if (charCode == 0 || (charCode & KeyCharacterMap.COMBINING_ACCENT) != 0 || charCode == PRIVATE_AREA_CODE) {
                     if(mHardShift == 1){
                         mShiftPressing = false;
