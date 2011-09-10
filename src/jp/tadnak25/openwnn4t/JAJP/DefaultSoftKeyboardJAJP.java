@@ -672,6 +672,11 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
                                           new KeyEvent(KeyEvent.ACTION_DOWN,
                                                        KeyEvent.KEYCODE_DPAD_RIGHT)));
             break;
+
+        case DefaultSoftKeyboard.KEYCODE_LIST_MUSHROOM:
+            mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.LIST_MUSHROOM));
+            break;
+
         case KEYCODE_NOP:
             break;
 

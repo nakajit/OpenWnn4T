@@ -46,6 +46,12 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     /** Change the keyboard language */
     public static final int KEYCODE_CHANGE_LANG = -500;
 
+    /** List the Mushroom/Candy applications */
+    public static final int KEYCODE_LIST_MUSHROOM = -501;
+
+    /** Key code for EISU-KANA conversion */
+    public static final int KEYCODE_EISU_KANA = -305;
+
     /* for Japanese 12-key keyboard */
     /** Japanese 12-key keyboard [1] */
     public static final int KEYCODE_JP12_1 = -201;
@@ -144,7 +150,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     protected OpenWnn4T    mWnn;
     
     /** Current keyboard view */
-    protected KeyboardView mKeyboardView;
+    protected OpenWnn4TKeyboardView mKeyboardView;
     
     /** View objects (main side) */
     protected ViewGroup mMainView;
@@ -533,7 +539,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
                                      mWnn.getResources().getString(R.string.keyboard_skin_id_default));
         int id = parent.getResources().getIdentifier(skin, "layout", "jp.tadnak25.openwnn4t");
 
-        mKeyboardView = (KeyboardView) mWnn.getLayoutInflater().inflate(id, null);
+        mKeyboardView = (OpenWnn4TKeyboardView) mWnn.getLayoutInflater().inflate(id, null);
         mKeyboardView.setOnKeyboardActionListener(this);
         mCurrentKeyboard = null;
 

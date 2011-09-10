@@ -225,6 +225,11 @@ public class OpenWnnEvent {
      */
     public static final int TOUCH_OTHER_KEY = 0xF0000020;
 
+    /**
+     * List the Mushroom/Candy applications.
+     */
+    public static final int LIST_MUSHROOM = 0xF0000100;
+
     /** Event code */
     public int code = UNDEFINED;
     /** Detail mode of the event */

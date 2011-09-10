@@ -15,7 +15,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<android.inputmethodservice.KeyboardView
+<jp.tadnak25.openwnn4t.OpenWnn4TKeyboardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/keyboard"
     android:layout_alignParentBottom="true"

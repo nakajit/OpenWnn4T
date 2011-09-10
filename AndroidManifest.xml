@@ -36,6 +36,10 @@
             <meta-data android:name="android.view.im" android:resource="@xml/method_ja" />
         </service>
 
+        <activity android:name="OpenWnn4TMushroom"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:excludeFromRecents="true" />
+
         <activity android:name="OpenWnnControlPanelJAJP"
                 android:label="@string/preference_ime_setting_app">
             <intent-filter>

@@ -128,6 +128,8 @@
       <string name="button_candidate_delete">学習削除</string>
       <string name="button_candidate_cancel">閉じる</string>
 
+    <string name="select_input_method">"入力方法の選択"</string>
+
     <!-- Tutorial -->
     <string name="touch_to_continue">次へ &gt;&gt;</string>
     <string name="touch_to_try">下のボタンで試してみてください。</string>

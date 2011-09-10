@@ -20,6 +20,7 @@ package jp.tadnak25.openwnn4t;
 import android.inputmethodservice.InputMethodService;
 import android.view.WindowManager;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -32,6 +33,7 @@ import android.view.inputmethod.*;
 import android.content.res.Configuration;
 import android.graphics.*;
 import android.graphics.drawable.*;
+
 
 /**
  * The OpenWnn IME's base class.
@@ -59,6 +61,8 @@ public class OpenWnn4T extends InputMethodService {
      
     /** Flag for checking if the previous down key event is consumed by OpenWnn  */
     private boolean mConsumeDownEvent;
+
+    private static WnnWord mMushroom = null;
 
     /**
      * Constructor
@@ -144,6 +148,7 @@ public class OpenWnn4T extends InputMethodService {
         if (!restarting && mComposingText != null) {
             mComposingText.clear();
         }
+        if (mMushroom != null) { commitMushroom(mMushroom); mMushroom = null; }
     }
 
     /** @see android.inputmethodservice.InputMethodService#onStartInputView */
@@ -265,4 +270,21 @@ public class OpenWnn4T extends InputMethodService {
     protected void close() {
         if (mConverter != null) { mConverter.close(); }
     }
+
+    protected void handleClose() {
+    }
+
+    protected void onSymbolKeyLongPressed() {
+        Intent intent = OpenWnn4TMushroom.createIntentMenu(OpenWnn4T.this, mComposingText.toString(1));
+        startActivity(intent);
+        handleClose();
+    }
+
+    protected void commitMushroom(WnnWord word) {
+    }
+
+    public static void setResultMushroom(WnnWord word) {
+        mMushroom = word;
+    }
+
 }

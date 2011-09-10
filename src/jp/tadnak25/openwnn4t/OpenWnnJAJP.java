@@ -690,6 +690,10 @@ public class OpenWnnJAJP extends OpenWnn4T {
             mStatus |= STATUS_INPUT_EDIT;
             return true;
 
+        case OpenWnnEvent.LIST_MUSHROOM:
+            onSymbolKeyLongPressed();
+            return true;
+
         default:
             break;
         }
@@ -2577,4 +2581,16 @@ public class OpenWnnJAJP extends OpenWnn4T {
         mConverterJAJP.breakSequence();
         mConverterEN.breakSequence();
     }
+
+    /** @see OpenWnn4T#handleClose */
+    @Override protected void handleClose() {
+        initializeScreen();
+    }
+
+    /** @see OpenWnn4T#commitMushroom */
+    @Override protected void commitMushroom(WnnWord word) {
+        learnWord(word);
+        commitText(word.candidate);
+    }
+
 }
