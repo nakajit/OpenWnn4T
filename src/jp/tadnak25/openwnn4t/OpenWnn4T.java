@@ -208,7 +208,8 @@ public class OpenWnn4T extends InputMethodService {
         int screenSize = config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
         boolean isHardKeyboardHidden = (config.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES);
         // If the display is xlarge size, don't go to fullscreen mode
-        if (screenSize == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+        if (screenSize == Configuration.SCREENLAYOUT_SIZE_XLARGE ||
+                screenSize == Configuration.SCREENLAYOUT_SIZE_LARGE) {
             return false;
         } else if ( OpenWnnControlPanelJAJP.isUseHwKeyboard(this) || !isHardKeyboardHidden ) {
             return false;
