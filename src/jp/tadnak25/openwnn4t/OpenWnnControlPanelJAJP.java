@@ -59,6 +59,21 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         updateSettingsKeySummary();
     }
 
+    /** @see android.preference.PreferenceActivity#onStop */
+    @Override public void onStop() {
+        OpenWnnJAJP wnn = OpenWnnJAJP.getInstance();
+        int code = OpenWnnEvent.CHANGE_INPUT_VIEW;
+        OpenWnnEvent ev = new OpenWnnEvent(code);
+        try {
+            wnn.onEvent(ev);
+        } catch (Exception ex) {
+        }
+        if (!isFinishing()) {
+            finish();
+        }
+        super.onStop();
+    }
+
     /** @see android.preference.PreferenceActivity#onDestroy */
     @Override protected void onDestroy() {
         getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(

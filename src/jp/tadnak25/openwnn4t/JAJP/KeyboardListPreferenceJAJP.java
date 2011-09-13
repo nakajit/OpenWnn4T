@@ -39,6 +39,7 @@ public class KeyboardListPreferenceJAJP extends ListPreference {
     }
 
     /** @see android.preference.DialogPreference#onDialogClosed */
+/*
     @Override protected void onDialogClosed(boolean positiveResult) {
     	super.onDialogClosed(positiveResult);
     	
@@ -52,4 +53,5 @@ public class KeyboardListPreferenceJAJP extends ListPreference {
         	}   		
     	}
     }
+*/
 }
