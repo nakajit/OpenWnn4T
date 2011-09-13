@@ -48,6 +48,8 @@
     <string name="preference_keyboard_locale_jp_name"> JP full keyboard </string>
     <string name="preference_keyboard_locale_us_name"> US full keyboard </string>
     <string name="preference_keyboard_blackberry_name"> BlackBerry keyboard </string>
+    <string name="preference_keyboard_jp_syllabary_name"> Japanese syllabary </string>
+    <string name="preference_keyboard_iroha_name"> Japanese pangram (IROHA) </string>
 
     <string name="preference_use_hardkeyboard_title"> Use Hardware Keyboard </string>
     <string name="preference_use_hardkeyboard_summary"> Not display software keyboard always. </string>
@@ -156,6 +158,8 @@
     <string name="key_left_pointing">◀</string>
     <string name="key_right_pointing">▶</string>
     <string name="key_symbol">:-)</string>
+    <string name="key_sound_mark">ﾞﾟ</string>
+    <string name="key_punctuation">､｡</string>
     <string name="key_space">スペース</string>
     <string name="key_space_conv">スペース/変換</string>
     <string name="key_change_mode">文字</string>

@@ -48,6 +48,8 @@
     <string name="preference_keyboard_locale_jp_name">日本語フルキーボード</string>
     <string name="preference_keyboard_locale_us_name">英語フルキーボード</string>
     <string name="preference_keyboard_blackberry_name">BlackBerry 記号配列</string>
+    <string name="preference_keyboard_jp_syllabary_name">五十音仮名配列</string>
+    <string name="preference_keyboard_iroha_name">いろは仮名配列</string>
 
     <string name="preference_use_hardkeyboard_title">物理キーボード利用</string>
     <string name="preference_use_hardkeyboard_summary">常にソフトキーボードを非表示にする</string>
