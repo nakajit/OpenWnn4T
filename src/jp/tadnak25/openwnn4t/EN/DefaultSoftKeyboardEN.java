@@ -19,7 +19,7 @@ package jp.tadnak25.openwnn4t.EN;
 
 import jp.tadnak25.openwnn4t.*;
 import android.content.SharedPreferences;
-import android.inputmethodservice.Keyboard;
+// import android.inputmethodservice.Keyboard;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;

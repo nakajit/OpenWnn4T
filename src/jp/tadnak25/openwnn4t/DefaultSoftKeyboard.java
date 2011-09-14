@@ -21,7 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
-import android.inputmethodservice.Keyboard;
+// import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -165,6 +165,31 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     
     /** Input restraint */
     protected boolean mDisableKeyInput = true;
+
+    protected int mKeyHeightRatio = 100;
+
+    protected class Keyboard extends android.inputmethodservice.Keyboard {
+        public Keyboard(Context context, int xmlLayoutResId) {
+            super(context, xmlLayoutResId, 0);
+        }
+        public Keyboard(Context context, int xmlLayoutResId, int modeId) {
+            super(context, xmlLayoutResId, modeId);
+        }
+        public Keyboard(Context context, int layoutTemplateResId,
+                CharSequence characters, int columns, int horizontalPadding) {
+            super(context, layoutTemplateResId, characters, columns, horizontalPadding);
+        }
+
+        @Override
+        protected Key createKeyFromXml(Resources res, Row parent, int x, int y,
+                XmlResourceParser parser) {
+            if (mKeyHeightRatio != 100) {
+                parent.defaultHeight = getKeyHeight() * mKeyHeightRatio / 100;
+            }
+            return new Key(res, parent, x, y, parser);
+        }
+    }
+
     /**
      * Keyboard surfaces 
      * <br>

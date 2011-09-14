@@ -51,6 +51,10 @@
     <string name="preference_keyboard_jp_syllabary_name">五十音仮名配列</string>
     <string name="preference_keyboard_iroha_name">いろは仮名配列</string>
 
+    <string name="preference_key_height_ratio_title">キーの高さ</string>
+    <string name="preference_key_height_ratio_hint">標準サイズに対する比率を入力</string>
+    <string name="preference_key_height_ratio_100">標準サイズ</string>
+
     <string name="preference_use_hardkeyboard_title">物理キーボード利用</string>
     <string name="preference_use_hardkeyboard_summary">常にソフトキーボードを非表示にする</string>
 

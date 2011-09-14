@@ -33,10 +33,13 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     private static final String PREF_SETTINGS_KEY = "keyboard_locale";
     private static final String PREF_USE_HARDKEYBOARD_KEY = "use_hardkeyboard";
     private static final String PREF_SKINS_KEY = "keyboard_skin";
+    private static final String PREF_KEY_HEIGHT_RATIO = "key_height_ratio";
     public static final int PREF_KEYBOARD_LOCALE_DEFAULT = R.string.preference_keyboard_locale_default;
+    public static final int PREF_KEY_HEIGHT_RATIO_DEFAULT = R.string.preference_key_height_ratio_100;
 
     private ListPreference mSettingsKeyPreference;
     private ListPreference mSkinsPreference;
+    private EditTextPreference mKeyHeightRatioPreference;
 
     /** @see android.preference.PreferenceActivity#onCreate */
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
 
         mSettingsKeyPreference = (ListPreference) findPreference(PREF_SETTINGS_KEY);
         mSkinsPreference = (ListPreference) findPreference(PREF_SKINS_KEY);
+        mKeyHeightRatioPreference = (EditTextPreference) findPreference(PREF_KEY_HEIGHT_RATIO);
         SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
@@ -96,6 +100,14 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         mSkinsPreference.setSummary(
                 getResources().getStringArray(R.array.keyboard_skin)
                 [mSkinsPreference.findIndexOfValue(mSkinsPreference.getValue())]);
+        String ratioText = mKeyHeightRatioPreference.getText();
+        int ratio = (ratioText.length() == 0)? 100: Integer.parseInt(ratioText);
+        if (ratio == 100 || ratio == 0) {
+            ratioText = getResources().getString(PREF_KEY_HEIGHT_RATIO_DEFAULT);
+        } else {
+            ratioText = ratioText + "%";
+        }
+        mKeyHeightRatioPreference.setSummary(ratioText);
     }
 
     /**
@@ -130,5 +142,17 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     public static boolean isUseHwKeyboard(Context context) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         return pref.getBoolean(PREF_USE_HARDKEYBOARD_KEY, false);
+    }
+
+    /**
+     * load ratio for key height preferences
+     * <br>
+     * @param context  The context
+     */
+    public static int getKeyHeightRatio(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        String ratioText = pref.getString(PREF_KEY_HEIGHT_RATIO, "100");
+        int ratio = (ratioText.length() == 0)? 100: Integer.parseInt(ratioText);
+        return (ratio == 0)? 100: ratio;
     }
 }

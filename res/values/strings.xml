@@ -51,6 +51,10 @@
     <string name="preference_keyboard_jp_syllabary_name"> Japanese syllabary </string>
     <string name="preference_keyboard_iroha_name"> Japanese pangram (IROHA) </string>
 
+    <string name="preference_key_height_ratio_title"> Key Height </string>
+    <string name="preference_key_height_ratio_hint"> Enter the ratio </string>
+    <string name="preference_key_height_ratio_100"> Standard size </string>
+
     <string name="preference_use_hardkeyboard_title"> Use Hardware Keyboard </string>
     <string name="preference_use_hardkeyboard_summary"> Not display software keyboard always. </string>
 

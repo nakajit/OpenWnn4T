@@ -21,7 +21,7 @@ import jp.tadnak25.openwnn4t.*;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.inputmethodservice.Keyboard;
+// import android.inputmethodservice.Keyboard;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -327,6 +327,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         /* Keyboard[# of Languages][portrait/landscape][# of keyboard type][shift off/on][max # of key-modes][noinput/input] */
         mKeyboard = new Keyboard[3][2][4][2][8][2];
         m5Lines = OpenWnnControlPanelJAJP.is5Lines(parent);
+        mKeyHeightRatio = OpenWnnControlPanelJAJP.getKeyHeightRatio(parent);
 
         if (mHardKeyboardHidden) {
             /* Create the suitable keyboard object */
