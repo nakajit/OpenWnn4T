@@ -66,7 +66,9 @@
     </Row>
 
     <Row android:keyboardMode="@+id/mode_normal" >
-        <Key android:keyLabel="わ" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="わ"
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ゎ"
+             android:keyEdgeFlags="left" />
         <Key android:keyLabel="か"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="が" />
         <Key android:keyLabel="よ"
@@ -87,7 +89,9 @@
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" >
-        <Key android:keyLabel="ワ" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="ワ"
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ヮ"
+             android:keyEdgeFlags="left" />
         <Key android:keyLabel="カ"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ヵガ" />
         <Key android:keyLabel="ヨ"
@@ -243,7 +247,7 @@
              android:isRepeatable="true" />
         <Key android:codes="-217" android:keyLabel="@string/key_right_pointing"
              android:isRepeatable="true" />
-        <Key android:codes="-310" android:keyLabel=" " />
+        <Key android:codes="-213" android:keyLabel="@string/key_sound_mark" />
         <Key android:keyLabel="ン" />
         <Key android:keyLabel="ー" />
         <Key android:keyLabel="ヽ"

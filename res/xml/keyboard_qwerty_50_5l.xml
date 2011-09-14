@@ -24,7 +24,9 @@
     <Row android:keyboardMode="@+id/mode_normal" >
         <Key android:codes="-213" android:keyLabel="@string/key_sound_mark"
              android:keyWidth="8%p" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="わ" android:horizontalGap="0.3%" />
+        <Key android:keyLabel="わ"
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ゎ"
+             android:horizontalGap="0.3%" />
         <Key android:keyLabel="ら" />
         <Key android:keyLabel="や"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ゃ" />
@@ -45,9 +47,11 @@
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" >
-        <Key android:codes="-310" android:keyLabel=" "
+        <Key android:codes="-213" android:keyLabel="@string/key_sound_mark"
              android:keyWidth="8%p" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="ワ" android:horizontalGap="0.3%" />
+        <Key android:keyLabel="ワ"
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ヮ"
+             android:horizontalGap="0.3%" />
         <Key android:keyLabel="ラ" />
         <Key android:keyLabel="ヤ"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ャ" />

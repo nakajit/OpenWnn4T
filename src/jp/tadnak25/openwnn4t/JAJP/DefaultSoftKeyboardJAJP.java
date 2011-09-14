@@ -123,6 +123,8 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
           put("\u308e", "\u308f");
           put("\u309b", "\u309c");
           put("\u309c", "\u309b");
+          put("\u309d", "\u309e");
+          put("\u309e", "\u309d");
     }};
 
     /** Toggle cycle table for full-width KATAKANA */
@@ -159,6 +161,8 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         put("\u30e3", "\u30e4"); put("\u30e5", "\u30e6"); put("\u30e7", "\u30e8");
         put("\u30ef", "\u30ee");
         put("\u30ee", "\u30ef");
+        put("\u30fd", "\u30fe");
+        put("\u30fe", "\u30fd");
     }};
 
     /** Toggle cycle table for half-width KATAKANA */
@@ -1121,6 +1125,9 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         switch (mCurrentKeyMode) {
         case KEYMODE_JA_FULL_HIRAGANA:
             hashTable = JP_FULL_HIRAGANA_REPLACE_TABLE;
+            if (m5Lines) {
+                hashTable.putAll(JP_FULL_KATAKANA_REPLACE_TABLE);
+            }
             break;
         case KEYMODE_JA_FULL_KATAKANA:
             hashTable = JP_FULL_KATAKANA_REPLACE_TABLE;

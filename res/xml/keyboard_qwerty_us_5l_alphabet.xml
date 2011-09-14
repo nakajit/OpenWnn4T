@@ -15,7 +15,7 @@
  limitations under the License.
 -->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-          android:keyWidth="8.5%p"
+          android:keyWidth="8.3%p"
           android:horizontalGap="0dip"
           android:verticalGap="0dip"
           android:keyHeight="@dimen/key_height_5lines"
@@ -40,10 +40,9 @@
         <Key android:keyLabel="9" />
         <Key android:keyLabel="0"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ⁿ∅" />
-        <Key android:keyLabel="-"
-             android:keyWidth="7.5%p" />
+        <Key android:keyLabel="-" />
         <Key android:codes="@integer/key_delete" android:keyLabel="@string/key_erase_left"
-             android:keyWidth="7.5%p" android:isRepeatable="true" android:keyEdgeFlags="right" />
+             android:isRepeatable="true" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" >
@@ -63,10 +62,9 @@
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="†‡★" />
         <Key android:keyLabel="(" />
         <Key android:keyLabel=")" />
-        <Key android:keyLabel="_"
-             android:keyWidth="7.5%p" />
+        <Key android:keyLabel="_" />
         <Key android:codes="@integer/key_delete" android:keyLabel="@string/key_erase_left"
-             android:keyWidth="7.5%p" android:isRepeatable="true" android:keyEdgeFlags="right" />
+             android:isRepeatable="true" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_normal" >
@@ -85,10 +83,8 @@
         <Key android:keyLabel="o"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="@string/alternates_for_o" />
         <Key android:keyLabel="p" />
-        <Key android:keyLabel="["
-             android:keyWidth="7.5%p" />
-        <Key android:keyLabel="]"
-             android:keyWidth="7.5%p" android:keyEdgeFlags="right" />
+        <Key android:keyLabel="[" />
+        <Key android:keyLabel="]" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" >
@@ -107,15 +103,13 @@
         <Key android:keyLabel="O"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="@string/alternates_for_o" />
         <Key android:keyLabel="P" />
-        <Key android:keyLabel="{"
-             android:keyWidth="7.5%p" />
-        <Key android:keyLabel="}"
-             android:keyWidth="7.5%p" android:keyEdgeFlags="right" />
+        <Key android:keyLabel="{" />
+        <Key android:keyLabel="}" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_normal" >
         <Key android:codes="@integer/key_tab" android:keyLabel="@string/key_rightward_tab"
-             android:keyWidth="4.5%p" android:keyEdgeFlags="left" />
+             android:keyWidth="4%p" android:keyEdgeFlags="left" />
         <Key android:keyLabel="a"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="@string/alternates_for_a" />
         <Key android:keyLabel="s"
@@ -129,12 +123,12 @@
         <Key android:keyLabel="l" />
         <Key android:keyLabel=";" />
         <Key android:codes="-101" android:keyLabel="@string/key_return"
-             android:keyWidth="10.5%p" android:keyEdgeFlags="right" />
+             android:keyWidth="12.6%p" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" >
         <Key android:codes="@integer/key_tab" android:keyLabel="@string/key_rightward_tab"
-             android:keyWidth="4.5%p" android:keyEdgeFlags="left" />
+             android:keyWidth="4%p" android:keyEdgeFlags="left" />
         <Key android:keyLabel="A"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="@string/alternates_for_a" />
         <Key android:keyLabel="S"
@@ -148,7 +142,7 @@
         <Key android:keyLabel="L" />
         <Key android:keyLabel=":" />
         <Key android:codes="-101" android:keyLabel="@string/key_return"
-             android:keyWidth="10.5%p" android:keyEdgeFlags="right" />
+             android:keyWidth="12.6%p" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_normal" >
@@ -165,10 +159,9 @@
         <Key android:keyLabel="m" />
         <Key android:keyLabel="," />
         <Key android:keyLabel="." />
-        <Key android:keyLabel="/"
-             android:keyWidth="7.5%p" />
+        <Key android:keyLabel="/" />
         <Key android:codes="@integer/key_shift" android:keyLabel="@string/key_caps_lock"
-             android:keyWidth="7.5%p" android:isModifier="true" android:isSticky="false" android:keyEdgeFlags="right" />
+             android:isModifier="true" android:isSticky="false" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" >
@@ -188,10 +181,9 @@
         <Key android:keyLabel="&gt;"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="≥»›" />
         <Key android:keyLabel="\?"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="¿"
-             android:keyWidth="7.5%p" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="¿" />
         <Key android:codes="@integer/key_shift" android:keyLabel="@string/key_caps_lock"
-             android:keyWidth="7.5%p" android:isModifier="true" android:isSticky="false" android:keyEdgeFlags="right" />
+             android:isModifier="true" android:isSticky="false" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_normal" android:rowEdgeFlags="bottom">
@@ -204,7 +196,7 @@
              android:isRepeatable="true" />
         <Key android:keyLabel="`" />
         <Key android:codes="@integer/key_space" android:keyLabel="@string/key_open_box"
-             android:keyWidth="30%p" android:isRepeatable="true" />
+             android:keyWidth="28.9%p" android:isRepeatable="true" />
         <Key android:keyLabel="&apos;"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="‘’" />
         <Key android:keyLabel="="
@@ -212,7 +204,7 @@
         <Key android:keyLabel="\\"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="¥" />
         <Key android:codes="-106" android:keyLabel="@string/key_symbol"
-             android:keyWidth="10.5%p" android:keyEdgeFlags="right" />
+             android:keyWidth="12.6%p" android:keyEdgeFlags="right" />
     </Row>
 
     <Row android:keyboardMode="@+id/mode_shift" android:rowEdgeFlags="bottom">
@@ -225,14 +217,14 @@
              android:isRepeatable="true" />
         <Key android:keyLabel="~" />
         <Key android:codes="@integer/key_space" android:keyLabel="@string/key_open_box"
-             android:keyWidth="30%p" android:isRepeatable="true" />
+             android:keyWidth="28.9%p" android:isRepeatable="true" />
         <Key android:keyLabel="&quot;"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="“”«»˝" />
         <Key android:keyLabel="+"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="±" />
         <Key android:keyLabel="|" />
         <Key android:codes="-106" android:keyLabel="@string/key_symbol"
-             android:keyWidth="10.5%p" android:keyEdgeFlags="right" />
+             android:keyWidth="12.6%p" android:keyEdgeFlags="right" />
     </Row>
 
 </Keyboard>
