@@ -2188,7 +2188,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
      */
     private void commitSpaceJustOne() {
         CharSequence seq = mInputConnection.getTextBeforeCursor(1, 0);
-        if (seq.charAt(0) != ' ') {
+        if (seq.length() > 0 && seq.charAt(0) != ' ') {
             commitText(" ");
         }
     }
