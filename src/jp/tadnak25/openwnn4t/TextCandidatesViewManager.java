@@ -69,6 +69,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
     private static final int CANDIDATE_MINIMUM_WIDTH = 48;
     /** Height of the view */
     private static final int CANDIDATE_MINIMUM_HEIGHT = 35;
+    private static final float CANDIDATE_MARGIN_RATIO = 1.5f;
     /** Align the candidate left if the width of the string exceeds this threshold */
     private static final int CANDIDATE_LEFT_ALIGN_THRESHOLD = 120;
     /** Maximum number of displaying candidates par one line (full view mode) */
@@ -165,6 +166,9 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
     private int mNormalViewWordCountOfLine;
     /** general infomation about a display */
     private final DisplayMetrics mMetrics = new DisplayMetrics();
+    /** converted sizes */
+    private int mTextSize;
+    private int mTextPadding;
 
     /** Event listener for touching a candidate */
     private OnTouchListener mCandidateOnTouch = new OnTouchListener() {
@@ -266,12 +270,21 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
         mWnn = parent;
         mViewWidth = width;
         mViewHeight = height;
-        mCandidateMinimumWidth = (int)(CANDIDATE_MINIMUM_WIDTH * mMetrics.density);
-        mCandidateMinimumHeight = (int)(CANDIDATE_MINIMUM_HEIGHT * mMetrics.density);
         mPortrait = 
             (parent.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE);
 
         Resources r = mWnn.getResources();
+
+        Drawable readMoreImage = r.getDrawable(R.drawable.cand_up);
+        int fontPixelSize = r.getDimensionPixelSize(R.dimen.candidate_font_size);
+        mTextSize = (int)(fontPixelSize / mMetrics.scaledDensity + 0.5f);
+        mTextPadding = (int)(mTextSize * 0.2f + 0.5f);
+        mCandidateMinimumWidth = (int)(fontPixelSize * CANDIDATE_MARGIN_RATIO + mTextPadding * 2 + 0.5f);
+        mCandidateMinimumHeight = (int)(fontPixelSize * CANDIDATE_MARGIN_RATIO + mTextPadding * 2 + 0.5f);
+        // mCandidateMinimumWidth = Math.max((int)(CANDIDATE_MINIMUM_WIDTH * mMetrics.density), mCandidateMinimumWidth);
+        // mCandidateMinimumHeight = Math.max((int)(CANDIDATE_MINIMUM_HEIGHT * mMetrics.density), mCandidateMinimumHeight);
+        mCandidateMinimumWidth = Math.max(readMoreImage.getMinimumWidth() + mTextPadding * 2, mCandidateMinimumWidth);
+        mCandidateMinimumHeight = Math.max(readMoreImage.getMinimumHeight(), mCandidateMinimumHeight);
 
         LayoutInflater inflater = parent.getLayoutInflater();
         mViewBody = (ViewGroup)inflater.inflate(R.layout.candidates, null);
@@ -327,6 +340,8 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
                     }
                 }
             });
+        int readMoreButtonPaddingTop = (mCandidateMinimumHeight - readMoreImage.getMinimumHeight()) / 2;
+        mReadMoreButton.setPadding(0, readMoreButtonPaddingTop, 0, 0);
 
         setViewType(CandidatesViewManager.VIEW_TYPE_CLOSE);
 
@@ -708,11 +723,11 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
      */
     private TextView createCandidateView() {
         TextView text = new TextView(mViewBodyScroll.getContext());
-        text.setTextSize(20);
+        text.setTextSize(mTextSize);
         text.setBackgroundResource(R.drawable.cand_back);
         text.setGravity(Gravity.CENTER);
         text.setSingleLine();
-        text.setPadding(4, 4, 4, 4);
+        text.setPadding(mTextPadding, mTextPadding, mTextPadding, mTextPadding);
         text.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                                                            ViewGroup.LayoutParams.WRAP_CONTENT,
                                                            1.0f));
@@ -925,10 +940,10 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
             mViewCandidateBase.addView(mViewScaleUp);
             TextView text = (TextView)mViewScaleUp.findViewById(R.id.candidate_scale_up_text);
             text.setText(word.candidate);
-            if (!mPortrait) {
-                Resources r = mViewBodyScroll.getContext().getResources();
-                text.setTextSize(r.getDimensionPixelSize(R.dimen.candidate_delete_word_size_landscape));
-            }
+//          if (!mPortrait) {
+//              Resources r = mViewBodyScroll.getContext().getResources();
+//              text.setTextSize(r.getDimensionPixelSize(R.dimen.candidate_delete_word_size_landscape));
+//          }
 
             mIsScaleUp = true;
             setReadMore();

@@ -55,7 +55,7 @@
             android:layout_marginLeft="0dip"
             android:layout_marginBottom="1dip"
             android:text="@string/user_dictionary_title_read"
-            android:textSize="16dip"
+            android:textSize="@dimen/candidate_font_size"
             android:textColor="?android:attr/textColorTertiary"
             android:background="#FFFFFF"
             android:focusable="false"/>
@@ -68,7 +68,7 @@
             android:layout_marginLeft="1dip"
             android:layout_marginBottom="1dip"
             android:text="@string/user_dictionary_title_candidate"
-            android:textSize="16dip"
+            android:textSize="@dimen/candidate_font_size"
             android:textColor="?android:attr/textColorTertiary"
             android:background="#FFFFFF"
             android:focusable="false"/>

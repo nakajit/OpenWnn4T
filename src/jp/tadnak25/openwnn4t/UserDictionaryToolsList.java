@@ -145,6 +145,9 @@ public abstract class UserDictionaryToolsList extends Activity
     /** Page right button */
     private Button mRightButton = null;
 
+    /** converted sizes */
+    private int mTextSize = WORD_TEXT_SIZE;
+
     /**
      * Send the specified event to IME
      *
@@ -197,6 +200,8 @@ public abstract class UserDictionaryToolsList extends Activity
             });
         mRightButton = b;
 
+        int fontPixelSize = getResources().getDimensionPixelSize(R.dimen.candidate_font_size);
+        mTextSize = (int)(fontPixelSize / getResources().getDisplayMetrics().scaledDensity + 0.5f);
     }
 
     /** @see android.app.Activity#onStart */
@@ -644,7 +649,7 @@ public abstract class UserDictionaryToolsList extends Activity
                 UserDictionaryToolsListFocus stroke = new UserDictionaryToolsListFocus(this);
                 stroke.setId(i);
                 stroke.setWidth(system_width/2);
-                stroke.setTextSize(WORD_TEXT_SIZE);
+                stroke.setTextSize(mTextSize);
                 stroke.setTextColor(Color.LTGRAY);
                 stroke.setBackgroundColor(UNFOCUS_BACKGROUND_COLOR);
                 stroke.setSingleLine();
@@ -659,7 +664,7 @@ public abstract class UserDictionaryToolsList extends Activity
                 UserDictionaryToolsListFocus candidate = new UserDictionaryToolsListFocus(this);
                 candidate.setId(i+MAX_WORD_COUNT);
                 candidate.setWidth(system_width/2);
-                candidate.setTextSize(WORD_TEXT_SIZE);
+                candidate.setTextSize(mTextSize);
                 candidate.setTextColor(Color.LTGRAY);
                 candidate.setBackgroundColor(UNFOCUS_BACKGROUND_COLOR);
                 candidate.setSingleLine();
