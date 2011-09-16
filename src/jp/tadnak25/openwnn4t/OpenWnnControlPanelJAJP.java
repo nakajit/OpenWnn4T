@@ -100,14 +100,9 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         mSkinsPreference.setSummary(
                 getResources().getStringArray(R.array.keyboard_skin)
                 [mSkinsPreference.findIndexOfValue(mSkinsPreference.getValue())]);
-        String ratioText = mKeyHeightRatioPreference.getText();
-        int ratio = (ratioText.length() == 0)? 100: Integer.parseInt(ratioText);
-        if (ratio == 100 || ratio == 0) {
-            ratioText = getResources().getString(PREF_KEY_HEIGHT_RATIO_DEFAULT);
-        } else {
-            ratioText = ratioText + "%";
-        }
-        mKeyHeightRatioPreference.setSummary(ratioText);
+        int ratio = getKeyHeightRatio(this);
+        mKeyHeightRatioPreference.setSummary((ratio == 100)?
+                getResources().getString(PREF_KEY_HEIGHT_RATIO_DEFAULT): ratio + "%");
     }
 
     /**
