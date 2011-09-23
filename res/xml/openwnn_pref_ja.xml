@@ -33,6 +33,13 @@
 			android:title="@string/preference_auto_caps_title"
 			android:summary="@string/preference_auto_caps_summary"
 			android:defaultValue="true" />
+    <CheckBoxPreference android:key="use_hardkeyboard"
+            android:title="@string/preference_use_hardkeyboard_title"
+            android:summary="@string/preference_use_hardkeyboard_summary"
+            android:defaultValue="false" />
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/preference_keyboard_appearance_title" >
     <jp.tadnak25.openwnn4t.JAJP.KeyboardListPreferenceJAJP
                         android:key="keyboard_skin"
 			android:title="@string/preference_keyboard_skin_title"
@@ -40,6 +47,13 @@
 			android:entries="@array/keyboard_skin"
 			android:entryValues="@array/keyboard_skin_id"
 			android:defaultValue="keyboard_android_default" />
+    <CheckBoxPreference android:key="use_customized_background"
+            android:title="@string/preference_use_customized_background_title"
+            android:summary="@string/preference_use_customized_background_summary"
+            android:defaultValue="false" />
+    <PreferenceScreen android:key="keyboard_background_image"
+            android:title="@string/preference_keyboard_background"
+            android:dependency="use_customized_background" />
     <CheckBoxPreference android:key="5lines"
             android:title="@string/preference_5lines_title"
             android:summary="@string/preference_5lines_summary"
@@ -56,10 +70,6 @@
             android:numeric="integer"
             android:maxLength="3"
             android:defaultValue="100" />
-    <CheckBoxPreference android:key="use_hardkeyboard"
-            android:title="@string/preference_use_hardkeyboard_title"
-            android:summary="@string/preference_use_hardkeyboard_summary"
-            android:defaultValue="false" />
   </PreferenceCategory>
     
   <PreferenceCategory android:title="@string/preference_conversion_menu">

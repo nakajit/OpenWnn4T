@@ -29,8 +29,13 @@ import android.content.res.*;
 import android.os.Vibrator;
 import android.media.MediaPlayer;
 import android.content.Context;
-
+import android.content.ContentResolver;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.util.Log;
+import java.io.InputStream;
 
 /**
  * The default software keyboard class.
@@ -568,6 +573,10 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
         mKeyboardView.setOnKeyboardActionListener(this);
         mCurrentKeyboard = null;
 
+        if (OpenWnnControlPanelJAJP.isCustomizedBackground(parent)) {
+            getCustomizedBackground(parent, width, height);
+        }
+
         mMainView = (ViewGroup) parent.getLayoutInflater().inflate(R.layout.keyboard_default_main, null);
         mSubView = (ViewGroup) parent.getLayoutInflater().inflate(R.layout.keyboard_default_sub, null);
         if ( OpenWnnControlPanelJAJP.isUseHwKeyboard(parent) || !mHardKeyboardHidden ) {
@@ -724,6 +733,36 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
             mKeyboardView.closing();
         }
         mDisableKeyInput = true;
+    }
+
+    private void getCustomizedBackground(Context context, int maxW, int maxH) {
+        String imagePath = OpenWnnControlPanelJAJP.getBackgroundImage(context);
+        if (imagePath.length() == 0) {
+            return;
+        }
+
+        Uri uri = Uri.parse(imagePath);
+        InputStream is = null;
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        ContentResolver cr = context.getContentResolver();
+
+        try {
+            opt.inJustDecodeBounds = true;
+            is = cr.openInputStream(uri);
+            BitmapFactory.decodeStream(is, null, opt);
+            is.close();
+
+            int scaleW = (int)(opt.outWidth / (float)maxW + 0.5f);
+            int scaleH = (int)(opt.outHeight / (float)maxH + 0.5f);
+            opt.inSampleSize = Math.max(scaleW, scaleH);
+
+            opt.inJustDecodeBounds = false;
+            is = cr.openInputStream(uri);
+            Bitmap bmp = BitmapFactory.decodeStream(is, null, opt);
+            is.close();
+            mKeyboardView.setBackgroundDrawable(new BitmapDrawable(context.getResources(), bmp));
+        } catch (Exception ex) {
+        }
     }
 
     /***********************************************************************

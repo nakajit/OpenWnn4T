@@ -34,12 +34,22 @@
     <string name="preference_auto_caps_title"> Auto Capitalization </string>
     <string name="preference_auto_caps_summary"> Automatically capitalize the 1st char of a sentence in alphabet mode. </string>
 
+    <string name="preference_keyboard_appearance_title">Keyboard Appearance</string>
+
     <string name="preference_keyboard_skin_title">Keyboard Image</string>
     <string name="preference_keyboard_skin_summary">Change keyboard image.</string>
 
     <string name="preference_keyboard_android_default">Standard</string>
     <string name="preference_keyboard_simple">Simple</string>
     <string name="preference_keyboard_metal">Metal</string>
+    <string name="preference_keyboard_trans">Transparent</string>
+    <string name="preference_keyboard_trans_black_text">Transparent (Black)</string>
+
+    <string name="preference_use_customized_background_title"> Use Background Image </string>
+    <string name="preference_use_customized_background_summary"> Enable customized background image. </string>
+
+    <string name="preference_keyboard_background"> Select Image </string>
+    <string name="preference_keyboard_background_none"> Not selected </string>
 
     <string name="preference_5lines_title"> Full Keyboard </string>
     <string name="preference_5lines_summary"> Enable large keyboard. </string>

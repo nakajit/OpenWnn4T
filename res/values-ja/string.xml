@@ -34,12 +34,22 @@
     <string name="preference_auto_caps_title">自動大文字変換</string>
     <string name="preference_auto_caps_summary">英字入力で文頭文字を大文字にする</string>
 
+    <string name="preference_keyboard_appearance_title">キーボードの外観</string>
+
     <string name="preference_keyboard_skin_title">キーボードのデザイン</string>
     <string name="preference_keyboard_skin_summary">キーボードのデザインを切り替える</string>
 
     <string name="preference_keyboard_android_default">標準</string>
     <string name="preference_keyboard_simple">シンプル</string>
     <string name="preference_keyboard_metal">メタリック</string>
+    <string name="preference_keyboard_trans">無地</string>
+    <string name="preference_keyboard_trans_black_text">無地 (黒文字)</string>
+
+    <string name="preference_use_customized_background_title">背景画像の利用</string>
+    <string name="preference_use_customized_background_summary">背景画像を有効にする</string>
+
+    <string name="preference_keyboard_background">背景画像の選択</string>
+    <string name="preference_keyboard_background_none">未選択</string>
 
     <string name="preference_5lines_title">フルキーボード</string>
     <string name="preference_5lines_summary">フルキーボードを有効にする</string>

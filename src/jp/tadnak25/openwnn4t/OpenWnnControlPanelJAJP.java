@@ -18,8 +18,11 @@
 package jp.tadnak25.openwnn4t;
 
 import android.content.*;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.*;
+import android.provider.MediaStore;
 
 /**
  * The control panel preference class for Japanese IME.
@@ -34,12 +37,21 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     private static final String PREF_USE_HARDKEYBOARD_KEY = "use_hardkeyboard";
     private static final String PREF_SKINS_KEY = "keyboard_skin";
     private static final String PREF_KEY_HEIGHT_RATIO = "key_height_ratio";
+    private static final String PREF_USE_CUSTOMIZED_BACKGROUND = "use_customized_background";
+    private static final String PREF_BACKGROUND_IMAGE_PICKER = "keyboard_background_image";
+    private static final String PREF_BACKGROUND_IMAGE = "background_image_path";
+    private static final String PREF_BACKGROUND_IMAGE_TITLE = "background_image_title";
     public static final int PREF_KEYBOARD_LOCALE_DEFAULT = R.string.preference_keyboard_locale_default;
     public static final int PREF_KEY_HEIGHT_RATIO_DEFAULT = R.string.preference_key_height_ratio_100;
+    public static final int PREF_BACKGROUND_IMAGE_TITLE_NONE = R.string.preference_keyboard_background_none;
+
+    private static final int REQ_BACKGROUND = 0;
 
     private ListPreference mSettingsKeyPreference;
     private ListPreference mSkinsPreference;
     private EditTextPreference mKeyHeightRatioPreference;
+    private PreferenceScreen mBackgroundImagePicker;
+    private boolean mWaitingResult = false;
 
     /** @see android.preference.PreferenceActivity#onCreate */
     @Override public void onCreate(Bundle savedInstanceState) {
@@ -53,14 +65,27 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         mSettingsKeyPreference = (ListPreference) findPreference(PREF_SETTINGS_KEY);
         mSkinsPreference = (ListPreference) findPreference(PREF_SKINS_KEY);
         mKeyHeightRatioPreference = (EditTextPreference) findPreference(PREF_KEY_HEIGHT_RATIO);
+        mBackgroundImagePicker = (PreferenceScreen) findPreference(PREF_BACKGROUND_IMAGE_PICKER);
         SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
         prefs.registerOnSharedPreferenceChangeListener(this);
+
+        setBackgroundImagePickerPreference(prefs);
     }
 
     /** @see android.preference.PreferenceActivity#onResume */
     @Override public void onResume() {
         super.onResume();
         updateSettingsKeySummary();
+    }
+
+    /** @see android.preference.PreferenceActivity#onActivityResult */
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQ_BACKGROUND) {
+                setBackgroundImage(data.getData());
+            }
+        }
+        mWaitingResult = false;
     }
 
     /** @see android.preference.PreferenceActivity#onStop */
@@ -72,7 +97,7 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
             wnn.onEvent(ev);
         } catch (Exception ex) {
         }
-        if (!isFinishing()) {
+        if (!isFinishing() && !mWaitingResult) {
             finish();
         }
         super.onStop();
@@ -83,6 +108,43 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(
                 this);
         super.onDestroy();
+    }
+
+    private void setBackgroundImagePickerPreference(SharedPreferences prefs) {
+        mBackgroundImagePicker.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference pref) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, REQ_BACKGROUND);
+                mWaitingResult = true;
+                return true;
+            }
+        });
+        try {
+            Uri uri = Uri.parse(getBackgroundImage(this));
+            getContentResolver().openInputStream(uri).close();
+        } catch (Exception ex) {
+            SharedPreferences.Editor e = mBackgroundImagePicker.getEditor();
+            e.putString(PREF_BACKGROUND_IMAGE, "");
+            e.putString(PREF_BACKGROUND_IMAGE_TITLE, getResources().getString(PREF_BACKGROUND_IMAGE_TITLE_NONE));
+            e.commit();
+        }
+        String title = prefs.getString(PREF_BACKGROUND_IMAGE_TITLE, getResources().getString(PREF_BACKGROUND_IMAGE_TITLE_NONE));
+        mBackgroundImagePicker.setSummary(title);
+    }
+
+    private void setBackgroundImage(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.TITLE };
+        ContentResolver cr = getContentResolver();
+        Cursor c = cr.query(uri, projection, null, null, null);
+        c.moveToFirst();
+        String title = c.getString(0);
+        SharedPreferences.Editor e = mBackgroundImagePicker.getEditor();
+        e.putString(PREF_BACKGROUND_IMAGE, uri.toString());
+        e.putString(PREF_BACKGROUND_IMAGE_TITLE, title);
+        e.commit();
+        mBackgroundImagePicker.setSummary(title);
     }
 
     /** @see android.preference.SharedPreferences.OnSharedPreferenceChangeListener#onSharedPreferenceChanged */
@@ -140,6 +202,16 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     }
 
     /**
+     * load use customized background preferences
+     * <br>
+     * @param context  The context
+     */
+    public static boolean isCustomizedBackground(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getBoolean(PREF_USE_CUSTOMIZED_BACKGROUND, false);
+    }
+
+    /**
      * load ratio for key height preferences
      * <br>
      * @param context  The context
@@ -149,5 +221,15 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         String ratioText = pref.getString(PREF_KEY_HEIGHT_RATIO, "100");
         int ratio = (ratioText.length() == 0)? 100: Integer.parseInt(ratioText);
         return (ratio == 0)? 100: ratio;
+    }
+
+    /**
+     * load uri string for background image preferences
+     * <br>
+     * @param context  The context
+     */
+    public static String getBackgroundImage(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getString(PREF_BACKGROUND_IMAGE, "");
     }
 }
