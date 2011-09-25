@@ -460,9 +460,13 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
             }
 
             List<Keyboard.Key> keys = keyboard.getKeys();
-            int keyIndex = (KEY_NUMBER_12KEY < keys.size())
-                ? KEY_INDEX_CHANGE_MODE_QWERTY : KEY_INDEX_CHANGE_MODE_12KEY;
-            mChangeModeKey = keys.get(keyIndex);
+            for (int keyIndex = 0; keyIndex < keys.size(); keyIndex++) {
+                mChangeModeKey = keys.get(keyIndex);
+                if (mChangeModeKey.codes[0] == KEYCODE_JP12_TOGGLE_MODE ||
+                        mChangeModeKey.codes[0] == KEYCODE_QWERTY_TOGGLE_MODE) {
+                    break;
+                }
+            }
 
             if (mIsInputTypeNull && mChangeModeKey != null) {
                 mPopupResId = mChangeModeKey.popupResId;
