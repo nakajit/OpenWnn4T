@@ -186,7 +186,9 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         String locale = pref.getString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
         if (locale.equals("0") || locale.equals("1")) {
-            pref.edit().putString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
+            SharedPreferences.Editor e = pref.edit();
+            e.putString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
+            e.commit();
         }
         return pref.getString(PREF_SETTINGS_KEY, context.getResources().getString(PREF_KEYBOARD_LOCALE_DEFAULT));
     }
