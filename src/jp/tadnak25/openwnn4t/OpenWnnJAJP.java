@@ -39,9 +39,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.KeyCharacterMap;
 import android.text.method.MetaKeyKeyListener;
-
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import org.json.JSONArray;
 
 /**
  * The OpenWnn Japanese IME class
@@ -137,6 +138,12 @@ public class OpenWnnJAJP extends OpenWnn4T {
 
     /** Message for {@code mHandler} (close) */
     private static final int MSG_CLOSE = 2;
+
+    /** Message for {@code mHandler} (show candy) */
+    private static final int MSG_CANDY = 3;
+
+    /** Message for {@code mHandler} (execute callback for mushroom/candy) */
+    private static final int MSG_CALLBACK = 4;
 
     /** Delay time(msec.) to start prediction after key input when the candidates view is not shown. */
     private static final int PREDICTION_DELAY_MS_1ST = 200;
@@ -285,11 +292,11 @@ public class OpenWnnJAJP extends OpenWnn4T {
 
     /** Symbol lists to display when the symbol key is pressed */
     private static final String[] SYMBOL_LISTS = {
-        SymbolList.SYMBOL_JAPANESE_FACE, SymbolList.SYMBOL_JAPANESE, SymbolList.SYMBOL_ENGLISH
+        SymbolList.SYMBOL_CANDY, SymbolList.SYMBOL_JAPANESE, SymbolList.SYMBOL_ENGLISH, SymbolList.SYMBOL_JAPANESE_FACE
     };
 
     /** Current symbol list */
-    private int mCurrentSymbol = 0;
+    private int mCurrentSymbol = -1;
 
     /** Romaji-to-Kana converter (HIRAGANA) */
     private Romkan mPreConverterHiragana;
@@ -422,6 +429,12 @@ public class OpenWnnJAJP extends OpenWnn4T {
                     if (mConverterJAJP != null) mConverterJAJP.close();
                     if (mConverterEN != null) mConverterEN.close();
                     if (mConverterSymbolEngineBack != null) mConverterSymbolEngineBack.close();
+                    break;
+                case MSG_CANDY:
+                    onEvent(new OpenWnnEvent(OpenWnnEvent.CHANGE_MODE, ENGINE_MODE_SYMBOL));
+                    break;
+                case MSG_CALLBACK:
+                    onEvent(new OpenWnnEvent(OpenWnnEvent.CALLBACK_MUSHROOM));
                     break;
                 }
             }
@@ -694,6 +707,10 @@ public class OpenWnnJAJP extends OpenWnn4T {
             onSymbolKeyLongPressed();
             return true;
 
+        case OpenWnnEvent.CALLBACK_MUSHROOM:
+            onMushroomFinished();
+            return true;
+
         default:
             break;
         }
@@ -751,6 +768,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
                       ||(keyCode == KeyEvent.KEYCODE_BACK && mCandidatesViewManager.getViewType() == CandidatesViewManager.VIEW_TYPE_FULL)
                       ||(keyEvent.isAltPressed() && (keyCode == KeyEvent.KEYCODE_SPACE)))))) {
 
+            clearCandy(keyCode);
             state = new EngineState();
             state.temporaryMode = EngineState.TEMPORARY_DICTIONARY_MODE_NONE;
             updateEngineState(state);
@@ -1867,7 +1885,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
             case EngineState.TEMPORARY_DICTIONARY_MODE_NONE:
                 if (myState.temporaryMode != EngineState.TEMPORARY_DICTIONARY_MODE_NONE) {
                     setDictionary(mPrevDictionarySet);
-                    mCurrentSymbol = 0;
+                    mCurrentSymbol = -1;
                     mPreConverter = mPreConverterBack;
                     mConverter = mConverterBack;
                     mDisableAutoCommitEnglishMask &= ~AUTO_COMMIT_ENGLISH_SYMBOL;
@@ -1875,11 +1893,12 @@ public class OpenWnnJAJP extends OpenWnn4T {
                 break;
 
             case EngineState.TEMPORARY_DICTIONARY_MODE_SYMBOL:
-                if (++mCurrentSymbol >= SYMBOL_LISTS.length) {
-                    mCurrentSymbol = 0;
-                }
                 if (mEnableSymbolListNonHalf) {
-                    mConverterSymbolEngineBack.setDictionary(SYMBOL_LISTS[mCurrentSymbol]);
+                    do {
+                        if (++mCurrentSymbol >= SYMBOL_LISTS.length) {
+                            mCurrentSymbol = 0;
+                        }
+                    } while (!mConverterSymbolEngineBack.setDictionary(SYMBOL_LISTS[mCurrentSymbol]));
                 } else {
                     mConverterSymbolEngineBack.setDictionary(SymbolList.SYMBOL_ENGLISH);
                 }
@@ -2591,6 +2610,59 @@ public class OpenWnnJAJP extends OpenWnn4T {
     @Override protected void commitMushroom(WnnWord word) {
         learnWord(word);
         commitText(word.candidate);
+    }
+
+    /** @see OpenWnn4T#setCandy */
+    @Override protected void setCandy(String candidatesString) {
+        JSONArray candidates = null;
+        try {
+            candidates = new JSONArray(candidatesString);
+        } catch (Exception e) {
+            return;
+        }
+        final int totalCount = candidates.length();
+        ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < totalCount; i++) {
+            try {
+                list.add(candidates.getString(i));
+            } catch (Exception e) {
+            }
+        }
+        if (mConverterSymbolEngineBack == null) {
+            mConverterSymbolEngineBack = new SymbolList(this, SymbolList.LANG_JA);
+        }
+        mConverterSymbolEngineBack.setCandy(list);
+        if (isInputViewShown()) {
+            showCandy();
+        } else {
+            mRequestShowCandy = true;
+        }
+    }
+
+    /** @see OpenWnn4T#showCandy */
+    @Override protected void showCandy() {
+        mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_CANDY),
+                                    PREDICTION_DELAY_MS_1ST);
+    }
+
+    /**
+     * The callback for Mushroom/Candy applications
+     */
+    public void callbackMushroom() {
+        mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_CALLBACK),
+                                    PREDICTION_DELAY_MS_1ST);
+    }
+
+    /**
+     * Clear the candidates for Candy applications
+     */
+    private void clearCandy(int keyCode) {
+        boolean isShifted = ((DefaultSoftKeyboardJAJP)mInputViewManager).isShifted();
+        if (keyCode == KeyEvent.KEYCODE_DEL && (isShifted || mHardShift > 0) &&
+                mEngineState.isSymbolList() &&
+                mCurrentSymbol >= 0 && SYMBOL_LISTS[mCurrentSymbol] == SymbolList.SYMBOL_CANDY) {
+            mConverterSymbolEngineBack.clearCandy();
+        }
     }
 
 }

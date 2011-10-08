@@ -63,6 +63,8 @@ public class OpenWnn4T extends InputMethodService {
     private boolean mConsumeDownEvent;
 
     private static WnnWord mMushroom = null;
+    private static String mCandy = null;
+    protected boolean mRequestShowCandy = false;
 
     /**
      * Constructor
@@ -148,7 +150,6 @@ public class OpenWnn4T extends InputMethodService {
         if (!restarting && mComposingText != null) {
             mComposingText.clear();
         }
-        if (mMushroom != null) { commitMushroom(mMushroom); mMushroom = null; }
     }
 
     /** @see android.inputmethodservice.InputMethodService#onStartInputView */
@@ -168,6 +169,12 @@ public class OpenWnn4T extends InputMethodService {
         if (mInputViewManager != null) { mInputViewManager.setPreferences(pref, attribute);  }
         if (mPreConverter != null) { mPreConverter.setPreferences(pref);  }
         if (mConverter != null) { mConverter.setPreferences(pref);  }
+    }
+
+    /** @see android.inputmethodservice.InputMethodService#onWindowShown */
+    @Override public void onWindowShown() {
+        super.onWindowShown();
+        if (mRequestShowCandy) { showCandy(); mRequestShowCandy = false; }
     }
 
     /** @see android.inputmethodservice.InputMethodService#requestHideSelf */
@@ -284,8 +291,23 @@ public class OpenWnn4T extends InputMethodService {
     protected void commitMushroom(WnnWord word) {
     }
 
+    protected void setCandy(String candidates) {
+    }
+
+    protected void showCandy() {
+    }
+
+    protected void onMushroomFinished() {
+        if (mMushroom != null) { commitMushroom(mMushroom); mMushroom = null; }
+        if (mCandy != null) { setCandy(mCandy); mCandy = null; }
+    }
+
     public static void setResultMushroom(WnnWord word) {
         mMushroom = word;
+    }
+
+    public static void setResultCandy(String candidates) {
+        mCandy = candidates;
     }
 
 }

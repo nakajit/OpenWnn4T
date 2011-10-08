@@ -59,6 +59,9 @@ public class SymbolList implements WnnEngine {
     /** Key string to get face mark list for Japanese */
     public static final String SYMBOL_JAPANESE_FACE  = "j_face";
 
+    /** Key string to get candidates list for Candy applications */
+    public static final String SYMBOL_CANDY = "candy";
+
     /** The name of XML tag key */
     private static final String XMLTAG_KEY = "string";
 
@@ -175,6 +178,30 @@ public class SymbolList implements WnnEngine {
     public boolean setDictionary(String listType) {
         mCurrentList = mSymbols.get(listType);
         return (mCurrentList != null);
+    }
+
+    /**
+     * Set the candidates list of Candy applications
+     *
+     * @param candidates    The list of canidate
+     */
+    public void setCandy(ArrayList<String> candidates) {
+        ArrayList<String> storedCandidates = mSymbols.put(SYMBOL_CANDY, candidates);
+        if (storedCandidates != null) {
+            storedCandidates.clear();
+            storedCandidates = null;
+        }
+    }
+
+    /**
+     * Clear the candidates list of Candy applications
+     */
+    public void clearCandy() {
+        ArrayList<String> storedCandidates = mSymbols.remove(SYMBOL_CANDY);
+        if (storedCandidates != null) {
+            storedCandidates.clear();
+            storedCandidates = null;
+        }
     }
 
     /***********************************************************************

@@ -843,4 +843,11 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
         mCurrentKeyboard = null;
         changeKeyboard(keyboard);
     }
+
+    /**
+     * Get the current Shift state.
+     */
+    public boolean isShifted() {
+        return mKeyboardView.isShifted();
+    }
 }

@@ -230,6 +230,11 @@ public class OpenWnnEvent {
      */
     public static final int LIST_MUSHROOM = 0xF0000100;
 
+    /**
+     * Execute callback from the Mushroom/Candy applications.
+     */
+    public static final int CALLBACK_MUSHROOM = 0xF0000101;
+
     /** Event code */
     public int code = UNDEFINED;
     /** Detail mode of the event */

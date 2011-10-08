@@ -29,7 +29,6 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import java.util.Collections;
 import java.util.List;
-import org.json.JSONArray;
 
 /**
  * The Mushroom/Candy caller for OpenWnn IME.
@@ -56,14 +55,12 @@ public class OpenWnn4TMushroom extends Activity
 
     private AlertDialog mOptionsDialog;
     private String mStroke;
-    private boolean isShowCandidates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mStroke = getIntent().getStringExtra(EXTRA_MUSHROOM);
         showOptionsMenu();
-        isShowCandidates = false;
     }
 
     @Override
@@ -73,24 +70,13 @@ public class OpenWnn4TMushroom extends Activity
             if (requestCode == REQ_MUSHROOM) {
                 result = data.getStringExtra(EXTRA_MUSHROOM);
                 OpenWnn4T.setResultMushroom(new WnnWord(result, mStroke));
-                finish();
             } else if (requestCode == REQ_CANDY) {
                 result = data.getStringExtra(EXTRA_CANDY);
-                showCandidates(result);
+                OpenWnn4T.setResultCandy(result);
             }
-        } else {
-            finish();
+            OpenWnnJAJP.getInstance().callbackMushroom();
         }
-    }
-
-    @Override
-    protected void onPause() {
-        if (isShowCandidates && !isFinishing()) {
-            mOptionsDialog.dismiss();
-            finish();
-            isShowCandidates = false;
-        }
-        super.onPause();
+        finish();
     }
 
     private void showOptionsMenu() {
@@ -136,42 +122,6 @@ public class OpenWnn4TMushroom extends Activity
         mOptionsDialog.show();
     }
 
-    private void showCandidates(String candidatesString) {
-        JSONArray candidates = null;
-        try {
-            candidates = new JSONArray(candidatesString);
-        } catch (Exception e) {
-            return;
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.user_dictionary_list_words);
-        builder.setCancelable(true);
-        builder.setOnCancelListener(this);
-        builder.setNegativeButton(android.R.string.cancel, this);
-        final int totalCount = candidates.length();
-        final CharSequence[] optionList = new CharSequence[totalCount];
-        for (int i = 0; i < totalCount; i++) {
-            try {
-                optionList[i] = candidates.getString(i);
-            } catch (Exception e) {
-                optionList[i] = "";
-            }
-        }
-        builder.setItems(optionList,
-                new DialogInterface.OnClickListener() {
-
-            public void onClick(DialogInterface di, int position) {
-                di.dismiss();
-                OpenWnn4T.setResultMushroom(new WnnWord((String)optionList[position], ""));
-                finish();
-                isShowCandidates = false;
-            }
-        });
-        mOptionsDialog = builder.create();
-        mOptionsDialog.show();
-        isShowCandidates = true;
-    }
-
     /** @see android.content.DialogInterface.OnClickListener#onClick */
     public void onClick(DialogInterface di, int position) {
         /* for Negative button */
@@ -182,7 +132,6 @@ public class OpenWnn4TMushroom extends Activity
     public void onCancel(DialogInterface di) {
         di.dismiss();
         finish();
-        isShowCandidates = false;
     }
 
     private void launchMushroom(ActivityInfo ai) {
