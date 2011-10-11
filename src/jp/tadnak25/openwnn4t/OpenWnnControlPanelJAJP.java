@@ -112,7 +112,6 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
 
     private void setBackgroundImagePickerPreference(SharedPreferences prefs) {
         mBackgroundImagePicker.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
             public boolean onPreferenceClick(Preference pref) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
