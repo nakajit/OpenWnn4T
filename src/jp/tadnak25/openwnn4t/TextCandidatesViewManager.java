@@ -277,6 +277,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
 
         Drawable readMoreImage = r.getDrawable(R.drawable.cand_up);
         int fontPixelSize = r.getDimensionPixelSize(R.dimen.candidate_font_size);
+        fontPixelSize = (fontPixelSize * OpenWnnControlPanelJAJP.getKeyHeightRatio(parent) + 50) / 100;
         mTextSize = (int)(fontPixelSize / mMetrics.scaledDensity + 0.5f);
         mTextPadding = (int)(mTextSize * 0.2f + 0.5f);
         mCandidateMinimumWidth = (int)(fontPixelSize * CANDIDATE_MARGIN_RATIO + mTextPadding * 2 + 0.5f);

@@ -692,6 +692,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
 
         case OpenWnnEvent.CHANGE_INPUT_VIEW:
             setInputView(onCreateInputView());
+            setCandidatesView(onCreateCandidatesView());
             return true;
 
         case OpenWnnEvent.CANDIDATE_VIEW_TOUCH:

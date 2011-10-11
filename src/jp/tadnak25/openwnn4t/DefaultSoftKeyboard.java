@@ -189,7 +189,7 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
         protected Key createKeyFromXml(Resources res, Row parent, int x, int y,
                 XmlResourceParser parser) {
             if (mKeyHeightRatio != 100) {
-                parent.defaultHeight = getKeyHeight() * mKeyHeightRatio / 100;
+                parent.defaultHeight = (getKeyHeight() * mKeyHeightRatio + 50) / 100;
             }
             return new Key(res, parent, x, y, parser);
         }
