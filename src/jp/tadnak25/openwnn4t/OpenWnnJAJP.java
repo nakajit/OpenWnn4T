@@ -2611,6 +2611,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
     @Override protected void commitMushroom(WnnWord word) {
         learnWord(word);
         commitText(word.candidate);
+        checkCommitInfo();
     }
 
     /** @see OpenWnn4T#setCandy */
