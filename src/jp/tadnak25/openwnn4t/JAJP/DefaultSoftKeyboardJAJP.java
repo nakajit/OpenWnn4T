@@ -501,6 +501,10 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
             return;
         }
 
+        if (throwKey(primaryCode)) {
+            primaryCode = KEYCODE_NOP;
+        }
+
         switch (primaryCode) {
         case KEYCODE_JP12_TOGGLE_MODE:
         case KEYCODE_QWERTY_TOGGLE_MODE:
@@ -508,13 +512,13 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
                 nextKeyMode();
             }
             break;
-
+/*
         case DefaultSoftKeyboard.KEYCODE_QWERTY_BACKSPACE:
         case KEYCODE_JP12_BACKSPACE:
             mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.INPUT_SOFT_KEY,
                                           new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)));
             break;
-
+*/
         case DefaultSoftKeyboard.KEYCODE_QWERTY_SHIFT:
             toggleShiftLock();
             break;
@@ -522,13 +526,13 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         case DefaultSoftKeyboard.KEYCODE_QWERTY_ALT:
             processAltKey();
             break;
-
+/*
         case KEYCODE_QWERTY_ENTER:
         case KEYCODE_JP12_ENTER:
             mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.INPUT_SOFT_KEY,
                                           new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER)));
             break;
-
+*/
         case KEYCODE_JP12_REVERSE:
             if (!mNoInput) {
                 mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.TOGGLE_REVERSE_CHAR, mCurrentCycleTable));
@@ -669,7 +673,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
             mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.INPUT_KEY,
                                           new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK)));
             break;
-            
+/*
         case KEYCODE_JP12_LEFT:
             mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.INPUT_SOFT_KEY,
                                           new KeyEvent(KeyEvent.ACTION_DOWN,
@@ -681,7 +685,7 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
                                           new KeyEvent(KeyEvent.ACTION_DOWN,
                                                        KeyEvent.KEYCODE_DPAD_RIGHT)));
             break;
-
+*/
         case DefaultSoftKeyboard.KEYCODE_LIST_MUSHROOM:
             mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.LIST_MUSHROOM));
             break;

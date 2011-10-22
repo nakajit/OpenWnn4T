@@ -20,6 +20,7 @@ package jp.tadnak25.openwnn4t;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.KeyEvent;
 import android.widget.TextView;
 // import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -36,6 +37,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.util.Log;
 import java.io.InputStream;
+import java.util.HashMap;
 
 /**
  * The default software keyboard class.
@@ -116,6 +118,10 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     public static final int KEYCODE_JP12_HAN_ALPHA  = -229;
     /** Japanese 12-key keyboard [MODE TOOGLE CHANGE] */
     public static final int KEYCODE_JP12_TOGGLE_MODE = -230;
+    /** Japanese 12-key keyboard [UP ARROW] */
+    public static final int KEYCODE_JP12_UP = -231;
+    /** Japanese 12-key keyboard [DOWN ARROW] */
+    public static final int KEYCODE_JP12_DOWN = -232;
     
     /* for Qwerty keyboard */
     /** Qwerty keyboard [DEL] */
@@ -150,6 +156,69 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     public static final int KEYCODE_QWERTY_TOGGLE_MODE = -114;
     /** Qwerty keyboard [PINYIN MODE] */
     public static final int KEYCODE_QWERTY_PINYIN  = -115;
+    /** Qwerty keyboard [PAGE UP] */
+    public static final int KEYCODE_QWERTY_PAGE_UP = -116;
+    /** Qwerty keyboard [PAGE DOWN] */
+    public static final int KEYCODE_QWERTY_PAGE_DOWN = -117;
+    /** Qwerty keyboard [MOVE TO HOME] */
+    public static final int KEYCODE_QWERTY_HOME = -118;
+    /** Qwerty keyboard [MOVE TO END] */
+    public static final int KEYCODE_QWERTY_END = -119;
+    /** Qwerty keyboard [Escape] */
+    public static final int KEYCODE_QWERTY_ESC = -120;
+    /** Qwerty keyboard [F1] */
+    public static final int KEYCODE_QWERTY_F1 = -121;
+    /** Qwerty keyboard [F2] */
+    public static final int KEYCODE_QWERTY_F2 = -122;
+    /** Qwerty keyboard [F3] */
+    public static final int KEYCODE_QWERTY_F3 = -123;
+    /** Qwerty keyboard [F4] */
+    public static final int KEYCODE_QWERTY_F4 = -124;
+    /** Qwerty keyboard [F5] */
+    public static final int KEYCODE_QWERTY_F5 = -125;
+    /** Qwerty keyboard [F6] */
+    public static final int KEYCODE_QWERTY_F6 = -126;
+    /** Qwerty keyboard [F7] */
+    public static final int KEYCODE_QWERTY_F7 = -127;
+    /** Qwerty keyboard [F8] */
+    public static final int KEYCODE_QWERTY_F8 = -128;
+    /** Qwerty keyboard [F9] */
+    public static final int KEYCODE_QWERTY_F9 = -129;
+    /** Qwerty keyboard [F10] */
+    public static final int KEYCODE_QWERTY_F10 = -130;
+    /** Qwerty keyboard [F11] */
+    public static final int KEYCODE_QWERTY_F11 = -131;
+    /** Qwerty keyboard [F12] */
+    public static final int KEYCODE_QWERTY_F12 = -132;
+
+    protected static final HashMap<Integer, Integer> KEYCODE_THROW_TABLE = new HashMap<Integer, Integer>() {{
+        put( (int)'\t', KeyEvent.KEYCODE_TAB );
+        put( KEYCODE_JP12_BACKSPACE, KeyEvent.KEYCODE_DEL );
+        put( KEYCODE_QWERTY_BACKSPACE, KeyEvent.KEYCODE_DEL );
+        put( KEYCODE_JP12_ENTER, KeyEvent.KEYCODE_ENTER );
+        put( KEYCODE_QWERTY_ENTER, KeyEvent.KEYCODE_ENTER );
+        put( KEYCODE_JP12_RIGHT, KeyEvent.KEYCODE_DPAD_RIGHT );
+        put( KEYCODE_JP12_LEFT, KeyEvent.KEYCODE_DPAD_LEFT );
+        put( KEYCODE_JP12_UP, KeyEvent.KEYCODE_DPAD_UP );
+        put( KEYCODE_JP12_DOWN, KeyEvent.KEYCODE_DPAD_DOWN );
+        put( KEYCODE_QWERTY_PAGE_UP, KeyEvent.KEYCODE_PAGE_UP );
+        put( KEYCODE_QWERTY_PAGE_DOWN, KeyEvent.KEYCODE_PAGE_DOWN );
+        put( KEYCODE_QWERTY_HOME, KeyEvent.KEYCODE_MOVE_HOME );
+        put( KEYCODE_QWERTY_END, KeyEvent.KEYCODE_MOVE_END );
+        put( KEYCODE_QWERTY_ESC, KeyEvent.KEYCODE_ESCAPE );
+        put( KEYCODE_QWERTY_F1, KeyEvent.KEYCODE_F1 );
+        put( KEYCODE_QWERTY_F2, KeyEvent.KEYCODE_F2 );
+        put( KEYCODE_QWERTY_F3, KeyEvent.KEYCODE_F3 );
+        put( KEYCODE_QWERTY_F4, KeyEvent.KEYCODE_F4 );
+        put( KEYCODE_QWERTY_F5, KeyEvent.KEYCODE_F5 );
+        put( KEYCODE_QWERTY_F6, KeyEvent.KEYCODE_F6 );
+        put( KEYCODE_QWERTY_F7, KeyEvent.KEYCODE_F7 );
+        put( KEYCODE_QWERTY_F8, KeyEvent.KEYCODE_F8 );
+        put( KEYCODE_QWERTY_F9, KeyEvent.KEYCODE_F9 );
+        put( KEYCODE_QWERTY_F10, KeyEvent.KEYCODE_F10 );
+        put( KEYCODE_QWERTY_F11, KeyEvent.KEYCODE_F11 );
+        put( KEYCODE_QWERTY_F12, KeyEvent.KEYCODE_F12 );
+    }};
     
     /** OpenWnn instance which hold this software keyboard*/
     protected OpenWnn4T    mWnn;
@@ -763,6 +832,21 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
             mKeyboardView.setBackgroundDrawable(new BitmapDrawable(context.getResources(), bmp));
         } catch (Exception ex) {
         }
+    }
+
+    protected boolean throwKey(int keycode) {
+        Integer keycodeObj = KEYCODE_THROW_TABLE.get(keycode);
+        if (keycodeObj == null) {
+            return false;
+        }
+        int eventKeycode = keycodeObj.intValue();
+        if (eventKeycode > KeyEvent.getMaxKeyCode()) {
+            // do nothing.
+            return true;
+        }
+        mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.INPUT_SOFT_KEY,
+                                      new KeyEvent(KeyEvent.ACTION_DOWN, eventKeycode)));
+        return true;
     }
 
     /***********************************************************************

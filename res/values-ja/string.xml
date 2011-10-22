@@ -60,6 +60,7 @@
     <string name="preference_keyboard_blackberry_name">BlackBerry 記号配列</string>
     <string name="preference_keyboard_jp_syllabary_name">五十音仮名配列</string>
     <string name="preference_keyboard_iroha_name">いろは仮名配列</string>
+    <string name="preference_keyboard_keycode_name">キーコード サンプル</string>
 
     <string name="preference_key_height_ratio_title">キーの高さ</string>
     <string name="preference_key_height_ratio_hint">標準サイズに対する比率を入力</string>

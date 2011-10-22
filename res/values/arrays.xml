@@ -40,6 +40,7 @@
         <item>@string/preference_keyboard_blackberry_name</item>
         <item>@string/preference_keyboard_jp_syllabary_name</item>
         <item>@string/preference_keyboard_iroha_name</item>
+        <item>@string/preference_keyboard_keycode_name</item>
     </string-array>
     <string-array name="preference_keyboard_locale_id">
         <item>preference_keyboard_locale_jp</item>
@@ -47,6 +48,7 @@
         <item>preference_keyboard_blackberry</item>
         <item>preference_keyboard_jp_syllabary</item>
         <item>preference_keyboard_iroha</item>
+        <item>preference_keyboard_keycode</item>
     </string-array>
     <string name="preference_keyboard_locale_default">preference_keyboard_locale_jp</string>
 
@@ -74,6 +76,11 @@
         <item>keyboard_qwerty_50iroha_5l</item>
         <item>keyboard_qwerty_50_5l_alphabet</item>
         <item>keyboard_qwerty_50_5l_full_alphabet</item>
+    </string-array>
+    <string-array name="preference_keyboard_keycode">
+        <item>keyboard_qwerty_keycode_5l</item>
+        <item>keyboard_qwerty_keycode_5l_alphabet</item>
+        <item>keyboard_qwerty_keycode_5l_full_alphabet</item>
     </string-array>
 
 </resources>

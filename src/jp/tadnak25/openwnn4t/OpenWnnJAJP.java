@@ -1412,6 +1412,23 @@ public class OpenWnnJAJP extends OpenWnn4T {
         case KeyEvent.KEYCODE_DPAD_UP:
         case KeyEvent.KEYCODE_DPAD_DOWN:
         case KeyEvent.KEYCODE_MENU:
+        case KeyEvent.KEYCODE_PAGE_UP:
+        case KeyEvent.KEYCODE_PAGE_DOWN:
+        case KeyEvent.KEYCODE_MOVE_HOME:
+        case KeyEvent.KEYCODE_MOVE_END:
+        case KeyEvent.KEYCODE_ESCAPE:
+        case KeyEvent.KEYCODE_F1:
+        case KeyEvent.KEYCODE_F2:
+        case KeyEvent.KEYCODE_F3:
+        case KeyEvent.KEYCODE_F4:
+        case KeyEvent.KEYCODE_F5:
+        case KeyEvent.KEYCODE_F6:
+        case KeyEvent.KEYCODE_F7:
+        case KeyEvent.KEYCODE_F8:
+        case KeyEvent.KEYCODE_F9:
+        case KeyEvent.KEYCODE_F10:
+        case KeyEvent.KEYCODE_F11:
+        case KeyEvent.KEYCODE_F12:
             ret = false;
             break;
             

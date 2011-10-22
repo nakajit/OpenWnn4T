@@ -27,4 +27,8 @@
     <integer name="key_yen">165</integer>
     <integer name="key_shift">-1</integer>
     <integer name="key_delete">-5</integer>
+    <integer name="key_arrow_up">-231</integer>
+    <integer name="key_arrow_down">-232</integer>
+    <integer name="key_arrow_left">-218</integer>
+    <integer name="key_arrow_right">-217</integer>
 </resources>
