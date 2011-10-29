@@ -30,11 +30,11 @@
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ばぱ" />
         <Key android:keyLabel="に" />
         <Key android:keyLabel="ほ"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ばぱ" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぼぽ" />
         <Key android:keyLabel="へ"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="べぺ" />
         <Key android:keyLabel="と"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="だ" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ど" />
         <Key android:keyLabel="ち"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぢ" />
         <Key android:keyLabel="り" />
@@ -77,7 +77,7 @@
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="だ" />
         <Key android:keyLabel="れ" />
         <Key android:keyLabel="そ"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ざ" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぞ" />
         <Key android:keyLabel="つ"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="っづ" />
         <Key android:keyLabel="ね" />
@@ -129,7 +129,7 @@
         <Key android:keyLabel="ふ"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぶぷ" />
         <Key android:keyLabel="こ"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="が" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ご" />
         <Key android:keyLabel="え"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぇ" />
         <Key android:keyLabel="て"

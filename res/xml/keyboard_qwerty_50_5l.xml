@@ -217,14 +217,14 @@
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ゞ" />
         <Key android:keyLabel="も" />
         <Key android:keyLabel="ほ"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ばぱ" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぼぽ" />
         <Key android:keyLabel="の" />
         <Key android:keyLabel="と"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="だ" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ど" />
         <Key android:keyLabel="そ"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ざ" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぞ" />
         <Key android:keyLabel="こ"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="が" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ご" />
         <Key android:keyLabel="お"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="ぉ" />
         <Key android:codes="-101" android:keyLabel="@string/key_return"
