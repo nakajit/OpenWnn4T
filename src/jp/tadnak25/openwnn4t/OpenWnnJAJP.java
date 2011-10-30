@@ -2206,6 +2206,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
     private boolean autoCommitEnglish() {
         if (isEnglishPrediction() && (mDisableAutoCommitEnglishMask == AUTO_COMMIT_ENGLISH_ON)) {
             CharSequence seq = mInputConnection.getTextBeforeCursor(2, 0);
+            if (seq == null) return false;
             Matcher m = mEnglishAutoCommitDelimiter.matcher(seq);
             if (m.matches()) {
                 if ((seq.charAt(0) == ' ') && mEnableAutoDeleteSpace) {
@@ -2229,6 +2230,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
      */
     private void commitSpaceJustOne() {
         CharSequence seq = mInputConnection.getTextBeforeCursor(1, 0);
+        if (seq == null) return;
         if (seq.length() > 0 && seq.charAt(0) != ' ') {
             commitText(" ");
         }
@@ -2558,6 +2560,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
 
         int composingLength = mComposingText.toString(mTargetLayer).length();
         CharSequence seq = mInputConnection.getTextBeforeCursor(mPrevCommitText.length() + composingLength, 0);
+        if (seq == null) return;
         seq = seq.subSequence(0, seq.length() - composingLength);
         if (!seq.equals(mPrevCommitText.toString())) {
             mPrevCommitCount = 0;
