@@ -159,8 +159,8 @@
       <string name="button_candidate_delete">Delete learning?</string>
       <string name="button_candidate_cancel">Close</string>
 
-    <!-- Title of the pop-up dialog in which the user switches input method components. -->
-    <string name="select_input_method">Select input method</string>
+    <string name="select_mushroom">Select Mushroom</string>
+    <string name="select_candy">Select Candy</string>
 
   <!-- Key top -->
     <string name="key_left_arrow">↤</string>

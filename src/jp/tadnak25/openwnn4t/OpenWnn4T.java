@@ -282,8 +282,11 @@ public class OpenWnn4T extends InputMethodService {
     protected void handleClose() {
     }
 
-    protected void onSymbolKeyLongPressed() {
-        Intent intent = OpenWnn4TMushroom.createIntentMenu(OpenWnn4T.this, mComposingText.toString(1));
+    protected void onSymbolKeyLongPressed(boolean isShifted) {
+        Intent intent = new Intent(this, OpenWnn4TMushroom.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra(OpenWnn4TMushroom.EXTRA_MUSHROOM, mComposingText.toString(1));
+        intent.putExtra(OpenWnn4TMushroom.EXTRA_CANDY, isShifted);
         startActivity(intent);
         handleClose();
     }

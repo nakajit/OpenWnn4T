@@ -150,6 +150,9 @@ public class OpenWnnJAJP extends OpenWnn4T {
 
     /** Delay time(msec.) to start prediction after key input when the candidates view is shown. */
     private static final int PREDICTION_DELAY_MS_SHOWING_CANDIDATE = 200;
+
+    /** Delay time(msec.) to start prediction after the mushroom/candy is finished. */
+    private static final int PREDICTION_DELAY_MS_MUSHROOM = 500;
     
 
     /** Convert engine's state */
@@ -705,7 +708,8 @@ public class OpenWnnJAJP extends OpenWnn4T {
             return true;
 
         case OpenWnnEvent.LIST_MUSHROOM:
-            onSymbolKeyLongPressed();
+            boolean isShifted = ((DefaultSoftKeyboardJAJP)mInputViewManager).isShifted();
+            onSymbolKeyLongPressed(isShifted || mHardShift > 0);
             return true;
 
         case OpenWnnEvent.CALLBACK_MUSHROOM:
@@ -2661,7 +2665,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
     /** @see OpenWnn4T#showCandy */
     @Override protected void showCandy() {
         mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_CANDY),
-                                    PREDICTION_DELAY_MS_1ST);
+                                    PREDICTION_DELAY_MS_MUSHROOM);
     }
 
     /**
@@ -2669,7 +2673,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
      */
     public void callbackMushroom() {
         mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_CALLBACK),
-                                    PREDICTION_DELAY_MS_1ST);
+                                    PREDICTION_DELAY_MS_MUSHROOM);
     }
 
     /**
