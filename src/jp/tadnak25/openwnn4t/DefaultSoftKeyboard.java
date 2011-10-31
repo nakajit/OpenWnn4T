@@ -882,7 +882,13 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     }
     
     /** @see android.inputmethodservice.KeyboardView.OnKeyboardActionListener#onText */
-    public void onText(CharSequence text) {}
+    public void onText(CharSequence text) {
+        if (!mNoInput) {
+            mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.COMMIT_COMPOSING_TEXT));
+        }
+        mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.SELECT_CANDIDATE,
+                                      new WnnWord(text.toString(), null)));
+    }
 
     /**
      * Get current key mode.
