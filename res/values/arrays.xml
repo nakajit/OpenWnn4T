@@ -56,31 +56,37 @@
         <item>keyboard_qwerty_jp_5l</item>
         <item>keyboard_qwerty_jp_5l_alphabet</item>
         <item>keyboard_qwerty_jp_5l_full_alphabet</item>
+        <item>keyboard_qwerty_5l_number</item>
     </string-array>
     <string-array name="preference_keyboard_locale_us">
         <item>keyboard_qwerty_us_5l</item>
         <item>keyboard_qwerty_us_5l_alphabet</item>
         <item>keyboard_qwerty_us_5l_full_alphabet</item>
+        <item>keyboard_qwerty_5l_number</item>
     </string-array>
     <string-array name="preference_keyboard_blackberry">
         <item>keyboard_qwerty_bb_5l</item>
         <item>keyboard_qwerty_bb_5l_alphabet</item>
         <item>keyboard_qwerty_bb_5l_full_alphabet</item>
+        <item>keyboard_qwerty_5l_number</item>
     </string-array>
     <string-array name="preference_keyboard_jp_syllabary">
         <item>keyboard_qwerty_50_5l</item>
         <item>keyboard_qwerty_50_5l_alphabet</item>
         <item>keyboard_qwerty_50_5l_full_alphabet</item>
+        <item>keyboard_qwerty_5l_number</item>
     </string-array>
     <string-array name="preference_keyboard_iroha">
         <item>keyboard_qwerty_50iroha_5l</item>
         <item>keyboard_qwerty_50_5l_alphabet</item>
         <item>keyboard_qwerty_50_5l_full_alphabet</item>
+        <item>keyboard_qwerty_5l_number</item>
     </string-array>
     <string-array name="preference_keyboard_keycode">
         <item>keyboard_qwerty_keycode_5l</item>
         <item>keyboard_qwerty_keycode_5l_alphabet</item>
         <item>keyboard_qwerty_keycode_5l_full_alphabet</item>
+        <item>keyboard_qwerty_5l_number</item>
     </string-array>
 
 </resources>
