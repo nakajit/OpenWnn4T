@@ -46,20 +46,18 @@
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="©®™" />
         <Key android:codes="0xFF02" android:keyLabel="&quot;"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="“”«»˝" />
-        <Key android:codes="0xFF03" android:keyLabel="\#"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="+±" />
+        <Key android:codes="0xFF03" android:keyLabel="\#" />
         <Key android:codes="0xFF04" android:keyLabel="$"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="¢£€¥₣₤₱" />
         <Key android:codes="0xFF05" android:keyLabel="%"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="‰" />
-        <Key android:codes="0xFF06" android:keyLabel="&amp;"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="*†‡★" />
+        <Key android:codes="0xFF06" android:keyLabel="&amp;" />
         <Key android:codes="0xFF07" android:keyLabel="&apos;"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="‘’" />
-        <Key android:codes="0xFF3B" android:keyLabel="["
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="{(" />
-        <Key android:codes="0xFF3D" android:keyLabel="]"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="})" />
+        <Key android:codes="0xFF08" android:keyLabel="("
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="[{&lt;≤«‹" />
+        <Key android:codes="0xFF09" android:keyLabel=")"
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="]}&gt;≥»›" />
         <Key android:codes="0xFF3E" android:keyLabel="^"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="↑↓←→" />
     </Row>
@@ -122,13 +120,13 @@
              android:popupKeyboard="@xml/keyboard_switch_key_qwerty_jp" />
         <Key android:codes="-106" android:keyLabel="@string/key_symbol" />
         <Key android:codes="0xFF0D" android:keyLabel="-"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="_~=≠≈∞" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="_~=≠≈∞+±" />
         <Key android:codes="0xFF0C" android:keyLabel=","
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters=";&lt;≤«‹" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters=";" />
         <Key android:codes="0x3000" android:keyLabel="@string/key_open_box"
              android:keyWidth="20%p" android:isRepeatable="true" />
         <Key android:codes="0xFF0E" android:keyLabel="."
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters=":&gt;≥»›" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters=":" />
         <Key android:codes="@integer/key_arrow_left" android:keyLabel="@string/key_left_pointing"
              android:isRepeatable="true" />
         <Key android:codes="@integer/key_arrow_down" android:keyLabel="@string/key_down_pointing"
@@ -142,7 +140,7 @@
              android:popupKeyboard="@xml/keyboard_switch_key_qwerty_jp" />
         <Key android:codes="-106" android:keyLabel="@string/key_symbol" />
         <Key android:codes="0xFF0F" android:keyLabel="/"
-             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="\\|" />
+             android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="\\|*†‡★" />
         <Key android:codes="0xFF01" android:keyLabel="!"
              android:popupKeyboard="@xml/kbd_popup_template" android:popupCharacters="¡" />
         <Key android:codes="0x3000" android:keyLabel="@string/key_open_box"
