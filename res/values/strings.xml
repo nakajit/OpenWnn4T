@@ -60,6 +60,7 @@
     <string name="preference_keyboard_blackberry_name"> BlackBerry keyboard </string>
     <string name="preference_keyboard_jp_syllabary_name"> Japanese syllabary </string>
     <string name="preference_keyboard_iroha_name"> Japanese pangram (IROHA) </string>
+    <string name="preference_keyboard_jp_syllabary_large_name"> Japanese syllabary (L)</string>
     <string name="preference_keyboard_keycode_name"> KEYCODE Sample </string>
 
     <string name="preference_key_height_ratio_title"> Key Height </string>
@@ -177,6 +178,7 @@
     <string name="key_symbol">:-)</string>
     <string name="key_sound_mark">ﾞﾟ</string>
     <string name="key_punctuation">､｡</string>
+    <string name="key_undo">↺</string>
     <string name="key_space">スペース</string>
     <string name="key_space_conv">スペース/変換</string>
     <string name="key_change_mode">文字</string>

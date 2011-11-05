@@ -1035,16 +1035,17 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         int xmlAlphabet     = res.getIdentifier(keyTable[1], "xml", "jp.tadnak25.openwnn4t");
         int xmlFullAlphabet = res.getIdentifier(keyTable[2], "xml", "jp.tadnak25.openwnn4t");
         int xmlNumber       = res.getIdentifier(keyTable[3], "xml", "jp.tadnak25.openwnn4t");
+        int xmlKatakana     = res.getIdentifier(keyTable[4], "xml", "jp.tadnak25.openwnn4t");
 
         /* qwerty shift_off */
         keyList = mKeyboard[LANG_JA][direction][KEYBOARD_QWERTY][KEYBOARD_SHIFT_OFF];
         keyList[KEYMODE_JA_FULL_HIRAGANA][0] = new Keyboard(parent, xmlHiragana, R.id.mode_normal);
         keyList[KEYMODE_JA_FULL_ALPHABET][0] = new Keyboard(parent, xmlFullAlphabet, R.id.mode_normal);
         keyList[KEYMODE_JA_FULL_NUMBER][0]   = keyList[KEYMODE_JA_FULL_ALPHABET][0];
-        keyList[KEYMODE_JA_FULL_KATAKANA][0] = keyList[KEYMODE_JA_FULL_HIRAGANA][0];
+        keyList[KEYMODE_JA_FULL_KATAKANA][0] = new Keyboard(parent, xmlKatakana, R.id.mode_normal);
         keyList[KEYMODE_JA_HALF_ALPHABET][0] = new Keyboard(parent, xmlAlphabet, R.id.mode_normal);
         keyList[KEYMODE_JA_HALF_NUMBER][0]   = new Keyboard(parent, xmlNumber, R.id.mode_normal);
-        keyList[KEYMODE_JA_HALF_KATAKANA][0] = keyList[KEYMODE_JA_FULL_HIRAGANA][0];
+        keyList[KEYMODE_JA_HALF_KATAKANA][0] = keyList[KEYMODE_JA_FULL_KATAKANA][0];
         keyList[KEYMODE_JA_HALF_PHONE][0]    = new Keyboard(parent, R.xml.keyboard_12key_phone);
 
         /* qwerty shift_on */
@@ -1052,10 +1053,10 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         keyList[KEYMODE_JA_FULL_HIRAGANA][0] = new Keyboard(parent, xmlHiragana, R.id.mode_shift);
         keyList[KEYMODE_JA_FULL_ALPHABET][0] = new Keyboard(parent, xmlFullAlphabet, R.id.mode_shift);
         keyList[KEYMODE_JA_FULL_NUMBER][0]   = keyList[KEYMODE_JA_FULL_ALPHABET][0];
-        keyList[KEYMODE_JA_FULL_KATAKANA][0] = keyList[KEYMODE_JA_FULL_HIRAGANA][0];
+        keyList[KEYMODE_JA_FULL_KATAKANA][0] = new Keyboard(parent, xmlKatakana, R.id.mode_shift);
         keyList[KEYMODE_JA_HALF_ALPHABET][0] = new Keyboard(parent, xmlAlphabet, R.id.mode_shift);
         keyList[KEYMODE_JA_HALF_NUMBER][0]   = new Keyboard(parent, xmlNumber, R.id.mode_shift);
-        keyList[KEYMODE_JA_HALF_KATAKANA][0] = keyList[KEYMODE_JA_FULL_HIRAGANA][0];
+        keyList[KEYMODE_JA_HALF_KATAKANA][0] = keyList[KEYMODE_JA_FULL_KATAKANA][0];
         keyList[KEYMODE_JA_HALF_PHONE][0]    =
             mKeyboard[LANG_JA][direction][KEYBOARD_QWERTY][KEYBOARD_SHIFT_OFF][KEYMODE_JA_HALF_PHONE][0];
     }
