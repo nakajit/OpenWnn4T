@@ -37,7 +37,7 @@
         </service>
 
         <activity android:name="OpenWnn4TMushroom"
-                  android:theme="@android:style/Theme.Dialog"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
                   android:excludeFromRecents="true" />
 
         <activity android:name="OpenWnnControlPanelJAJP"
