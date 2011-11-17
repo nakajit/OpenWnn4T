@@ -17,8 +17,8 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	  package="jp.tadnak25.openwnn4t"
-      android:versionCode="13526"
-      android:versionName="1.3.5.2.6">
+      android:versionCode="13527"
+      android:versionName="1.3.5.2.7">
 
     <original-package android:name="jp.tadnak25.openwnn4t" />
 
