@@ -694,6 +694,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
             return true;
 
         case OpenWnnEvent.CHANGE_INPUT_VIEW:
+            setInitKeyboardType();
             setInputView(onCreateInputView());
             setCandidatesView(onCreateCandidatesView());
             return true;
@@ -2693,4 +2694,12 @@ public class OpenWnnJAJP extends OpenWnn4T {
         }
     }
 
+    /**
+     * Set the keyboard type for full keyboard settings
+     */
+    private void setInitKeyboardType() {
+        if (OpenWnnControlPanelJAJP.is5Lines(this)) {
+            ((DefaultSoftKeyboardJAJP)mInputViewManager).changeKeyboardType(DefaultSoftKeyboard.KEYBOARD_QWERTY);
+        }
+    }
 }
