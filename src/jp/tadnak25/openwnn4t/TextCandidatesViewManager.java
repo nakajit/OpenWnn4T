@@ -119,6 +119,10 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
 
     /** Number of candidates displaying */
     private int mWordCount;
+    /** Number of candidates displaying on normal view */
+    private int mWordCountOnNormalView;
+    /** Current focused Id of candidates displaying */
+    private int mFocusedWord;
     /** List of candidates */
     private ArrayList<WnnWord> mWnnWordArray;
 
@@ -494,6 +498,8 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
         mViewCandidateTemplate.setBackgroundResource(R.drawable.cand_back);
 
         displayCandidates(converter, true, getMaxLine());
+        mWordCountOnNormalView = (mCanReadMore)? mWordCount - 1: mWordCount;
+        mFocusedWord = 0;
     }
 
     /** @see CandidatesViewManager#getMaxLine */
@@ -768,12 +774,12 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
         LinearLayout candidateList = mViewCandidateList1st;
         int lineNum = candidateList.getChildCount();
         for (int i = 0; i < lineNum; i++) {
-
             LinearLayout lineView = (LinearLayout)candidateList.getChildAt(i);
             int size = lineView.getChildCount();
             for (int j = 0; j < size; j++) {
                 View v = lineView.getChildAt(j);
                 v.setVisibility(View.GONE);
+                v.setId(View.NO_ID);
             }
         }
     }
@@ -787,6 +793,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
         for (int i = 0; i < size; i++) {
             View v = layout.getChildAt(i);
             v.setVisibility(View.GONE);
+            v.setId(View.NO_ID);
         }
     
         mLineCount = 1;
@@ -1007,5 +1014,45 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
      */
     private int getCandidateMinimumHeight() {
         return mCandidateMinimumHeight;
+    }
+
+    /** @see CandidatesViewManager#requestFocus */
+    public WnnWord requestFocus() {
+        WnnWord word = null;
+        if (mIsFullView) {
+            mViewCandidateList2nd.findViewById(mFocusedWord).setPressed(true);
+        } else {
+            if (mFocusedWord >= mWordCountOnNormalView) {
+                mViewCandidateList2nd.findViewById(mFocusedWord).setPressed(false);
+                mFocusedWord = mWordCountOnNormalView - 1;
+                word = mWnnWordArray.get(mFocusedWord);
+            }
+            mViewCandidateList1st.findViewById(mFocusedWord).setPressed(true);
+        }
+        return word;
+    }
+
+    /** @see CandidatesViewManager#requestFocus */
+    public WnnWord requestFocus(boolean isNext) {
+        WnnWord word = null;
+        int wordCount = (mIsFullView)? mWordCount: mWordCountOnNormalView;
+        View focusedView = (mFocusedWord < mWordCountOnNormalView)? mViewCandidateList1st: mViewCandidateList2nd;
+        if (isNext && mFocusedWord+1 < wordCount) {
+            focusedView.findViewById(mFocusedWord).setPressed(false);
+            mFocusedWord++;
+            focusedView = (mFocusedWord < mWordCountOnNormalView)? mViewCandidateList1st: mViewCandidateList2nd;
+            focusedView.findViewById(mFocusedWord).setPressed(true);
+            word = mWnnWordArray.get(mFocusedWord);
+        } else if (isNext && !mIsFullView && mCanReadMore) {
+            mIsFullView = true;
+            mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.LIST_CANDIDATES_FULL));
+        } else if (!isNext && mFocusedWord > 0) {
+            focusedView.findViewById(mFocusedWord).setPressed(false);
+            mFocusedWord--;
+            focusedView = (mFocusedWord < mWordCountOnNormalView)? mViewCandidateList1st: mViewCandidateList2nd;
+            focusedView.findViewById(mFocusedWord).setPressed(true);
+            word = mWnnWordArray.get(mFocusedWord);
+        }
+        return word;
     }
 }

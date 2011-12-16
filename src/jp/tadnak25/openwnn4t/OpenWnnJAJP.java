@@ -787,6 +787,8 @@ public class OpenWnnJAJP extends OpenWnn4T {
         } else if (ev.code == OpenWnnEvent.LIST_CANDIDATES_NORMAL) {
             mStatus &= ~STATUS_CANDIDATE_FULL;
             mCandidatesViewManager.setViewType(CandidatesViewManager.VIEW_TYPE_NORMAL);
+            WnnWord word = mCandidatesViewManager.requestFocus();
+            changeL2Segment(word);
             return true;
         }
 
@@ -1160,6 +1162,20 @@ public class OpenWnnJAJP extends OpenWnn4T {
             case KeyEvent.KEYCODE_VOLUME_UP:
                 return false;
 
+            case KeyEvent.KEYCODE_DPAD_UP:
+                if (isEnableL2Converter() && mTargetLayer == ComposingText.LAYER2) {
+                    WnnWord word = mCandidatesViewManager.requestFocus(false);
+                    changeL2Segment(word);
+                }
+                return true;
+
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                if (isEnableL2Converter() && mTargetLayer == ComposingText.LAYER2) {
+                    WnnWord word = mCandidatesViewManager.requestFocus(true);
+                    changeL2Segment(word);
+                }
+                return true;
+
             default:
                 return true;
             }
@@ -1264,7 +1280,12 @@ public class OpenWnnJAJP extends OpenWnn4T {
                 mCandidatesViewManager.clearCandidates();
                 breakSequence();
             } else {
-                startConvert(EngineState.CONVERT_TYPE_RENBUN);
+                if (isEnableL2Converter() && mTargetLayer == ComposingText.LAYER2) {
+                    WnnWord word = mCandidatesViewManager.requestFocus(true);
+                    changeL2Segment(word);
+                } else {
+                    startConvert(EngineState.CONVERT_TYPE_RENBUN);
+                }
             }
         }
     }
@@ -1597,6 +1618,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
             if (candidates != 0) {
                 mComposingText.setCursor(ComposingText.LAYER2, 1);
                 mCandidatesViewManager.displayCandidates(mConverter);
+                mCandidatesViewManager.requestFocus();
             } else {
                 mComposingText.setCursor(ComposingText.LAYER1,
                                          mComposingText.toString(ComposingText.LAYER1).length());
@@ -2115,7 +2137,12 @@ public class OpenWnnJAJP extends OpenWnn4T {
                     commitSpaceJustOne();
                     checkCommitInfo();
                 } else {
-                    startConvert(EngineState.CONVERT_TYPE_RENBUN);
+                    if (isEnableL2Converter() && mTargetLayer == ComposingText.LAYER2) {
+                        WnnWord word = mCandidatesViewManager.requestFocus(true);
+                        changeL2Segment(word);
+                    } else {
+                        startConvert(EngineState.CONVERT_TYPE_RENBUN);
+                    }
                 }
             }
             mEnableAutoDeleteSpace = false;
@@ -2701,5 +2728,17 @@ public class OpenWnnJAJP extends OpenWnn4T {
         if (OpenWnnControlPanelJAJP.is5Lines(this)) {
             ((DefaultSoftKeyboardJAJP)mInputViewManager).changeKeyboardType(DefaultSoftKeyboard.KEYBOARD_QWERTY);
         }
+    }
+
+    private void changeL2Segment(WnnWord word) {
+        if (word == null) return;
+        StrSegment[] ss = new StrSegment[1];
+        ss[0] = mComposingText.getStrSegment(ComposingText.LAYER2, 0);
+        if (ss[0] instanceof StrSegmentClause) {
+            ((StrSegmentClause)ss[0]).clause.candidate = word.candidate;
+        }
+        ss[0].string = word.candidate;
+        mComposingText.replaceStrSegment(ComposingText.LAYER2, ss);
+        updateViewStatus(ComposingText.LAYER2, false, false);
     }
 }

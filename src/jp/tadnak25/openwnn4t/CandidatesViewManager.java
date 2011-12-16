@@ -106,4 +106,19 @@ public interface CandidatesViewManager {
      * @param pref    The preferences
      */
     public void setPreferences(SharedPreferences pref);
+
+    /**
+     * Give focus to the current candidate.
+     *
+     * @return          The focused candiate
+     */
+    public WnnWord requestFocus();
+
+    /**
+     * Give focus to the next/previous candidate.
+     *
+     * @param isNext    next or previous
+     * @return          The focused candiate
+     */
+    public WnnWord requestFocus(boolean isNext);
 }
