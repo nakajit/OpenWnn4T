@@ -23,6 +23,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.*;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 /**
  * The control panel preference class for Japanese IME.
@@ -115,7 +116,17 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
             public boolean onPreferenceClick(Preference pref) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
-                startActivityForResult(intent, REQ_BACKGROUND);
+                String title = getResources().getString(R.string.preference_keyboard_background);
+                try {
+                    startActivityForResult(Intent.createChooser(intent, title), REQ_BACKGROUND);
+                } catch (Exception ePick) {
+                    try {
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intent, title), REQ_BACKGROUND);
+                    } catch (Exception eGetContent) {
+                        return true;
+                    }
+                }
                 mWaitingResult = true;
                 return true;
             }
@@ -134,6 +145,10 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     }
 
     private void setBackgroundImage(Uri uri) {
+        if (!uri.getScheme().equals(ContentResolver.SCHEME_CONTENT)) {
+            Toast.makeText(this, android.R.string.httpErrorUnsupportedScheme, Toast.LENGTH_LONG).show();
+            return;
+        }
         String[] projection = { MediaStore.Images.Media.TITLE };
         ContentResolver cr = getContentResolver();
         Cursor c = cr.query(uri, projection, null, null, null);
