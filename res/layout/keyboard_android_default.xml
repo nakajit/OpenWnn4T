@@ -23,4 +23,5 @@
     android:layout_height="wrap_content"
     android:keyTextSize="@dimen/candidate_font_size"
     android:labelTextSize="@dimen/candidate_font_size"
+    android:verticalCorrection="@dimen/key_vertical_correction"
 />

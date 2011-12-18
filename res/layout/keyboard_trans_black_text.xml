@@ -26,4 +26,5 @@
     android:keyTextSize="@dimen/candidate_font_size"
     android:labelTextSize="@dimen/candidate_font_size"
     android:background="@android:color/background_light"
+    android:verticalCorrection="@dimen/key_vertical_correction"
 />
