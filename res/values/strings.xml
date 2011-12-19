@@ -67,6 +67,13 @@
     <string name="preference_key_height_ratio_hint"> Enter the ratio </string>
     <string name="preference_key_height_ratio_100"> Standard size </string>
 
+    <string name="preference_candidate_lines_portrait_title"> Candidate Lines (Portrait) </string>
+    <string name="preference_candidate_lines_landscape_title"> Candidate Lines (Landscape) </string>
+    <string name="preference_candidate_lines_1_name">1 (STD of Landscape)</string>
+    <string name="preference_candidate_lines_2_name">2 (STD of Portrait)</string>
+    <string name="preference_candidate_lines_3_name">3</string>
+    <string name="preference_candidate_lines_4_name">4</string>
+
     <string name="preference_use_hardkeyboard_title"> Use Hardware Keyboard </string>
     <string name="preference_use_hardkeyboard_summary"> Not display software keyboard always. </string>
 

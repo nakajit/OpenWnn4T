@@ -70,6 +70,16 @@
             android:numeric="integer"
             android:maxLength="3"
             android:defaultValue="100" />
+    <ListPreference android:key="candidate_lines_portrait"
+            android:title="@string/preference_candidate_lines_portrait_title"
+            android:entries="@array/preference_candidate_lines"
+            android:entryValues="@array/preference_candidate_lines_id"
+            android:defaultValue="2" />
+    <ListPreference android:key="candidate_lines_landscape"
+            android:title="@string/preference_candidate_lines_landscape_title"
+            android:entries="@array/preference_candidate_lines"
+            android:entryValues="@array/preference_candidate_lines_id"
+            android:defaultValue="1" />
   </PreferenceCategory>
     
   <PreferenceCategory android:title="@string/preference_conversion_menu">

@@ -104,4 +104,17 @@
         <item>keyboard_qwerty_keycode_5l</item>
     </string-array>
 
+    <string-array name="preference_candidate_lines">
+        <item>@string/preference_candidate_lines_1_name</item>
+        <item>@string/preference_candidate_lines_2_name</item>
+        <item>@string/preference_candidate_lines_3_name</item>
+        <item>@string/preference_candidate_lines_4_name</item>
+    </string-array>
+    <string-array name="preference_candidate_lines_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
 </resources>

@@ -38,6 +38,8 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     private static final String PREF_USE_HARDKEYBOARD_KEY = "use_hardkeyboard";
     private static final String PREF_SKINS_KEY = "keyboard_skin";
     private static final String PREF_KEY_HEIGHT_RATIO = "key_height_ratio";
+    private static final String PREF_CANDIDATE_LINES_PORTRAIT = "candidate_lines_portrait";
+    private static final String PREF_CANDIDATE_LINES_LANDSCAPE = "candidate_lines_landscape";
     private static final String PREF_USE_CUSTOMIZED_BACKGROUND = "use_customized_background";
     private static final String PREF_BACKGROUND_IMAGE_PICKER = "keyboard_background_image";
     private static final String PREF_BACKGROUND_IMAGE = "background_image_path";
@@ -51,6 +53,8 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     private ListPreference mSettingsKeyPreference;
     private ListPreference mSkinsPreference;
     private EditTextPreference mKeyHeightRatioPreference;
+    private ListPreference mCandidateLinesPortraitPreference;
+    private ListPreference mCandidateLinesLandscapePreference;
     private PreferenceScreen mBackgroundImagePicker;
     private boolean mWaitingResult = false;
 
@@ -66,6 +70,8 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         mSettingsKeyPreference = (ListPreference) findPreference(PREF_SETTINGS_KEY);
         mSkinsPreference = (ListPreference) findPreference(PREF_SKINS_KEY);
         mKeyHeightRatioPreference = (EditTextPreference) findPreference(PREF_KEY_HEIGHT_RATIO);
+        mCandidateLinesPortraitPreference = (ListPreference) findPreference(PREF_CANDIDATE_LINES_PORTRAIT);
+        mCandidateLinesLandscapePreference = (ListPreference) findPreference(PREF_CANDIDATE_LINES_LANDSCAPE);
         mBackgroundImagePicker = (PreferenceScreen) findPreference(PREF_BACKGROUND_IMAGE_PICKER);
         SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
         prefs.registerOnSharedPreferenceChangeListener(this);
@@ -179,6 +185,12 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         int ratio = getKeyHeightRatio(this);
         mKeyHeightRatioPreference.setSummary((ratio == 100)?
                 getResources().getString(PREF_KEY_HEIGHT_RATIO_DEFAULT): ratio + "%");
+        mCandidateLinesPortraitPreference.setSummary(
+                getResources().getStringArray(R.array.preference_candidate_lines)
+                [mCandidateLinesPortraitPreference.findIndexOfValue(mCandidateLinesPortraitPreference.getValue())]);
+        mCandidateLinesLandscapePreference.setSummary(
+                getResources().getStringArray(R.array.preference_candidate_lines)
+                [mCandidateLinesLandscapePreference.findIndexOfValue(mCandidateLinesLandscapePreference.getValue())]);
     }
 
     /**
@@ -237,6 +249,22 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
         String ratioText = pref.getString(PREF_KEY_HEIGHT_RATIO, "100");
         int ratio = (ratioText.length() == 0)? 100: Integer.parseInt(ratioText);
         return (ratio == 0)? 100: ratio;
+    }
+
+    /**
+     * load candidate lines preferences
+     * <br>
+     * @param context  The context
+     */
+    public static int getCandidateLines(Context context, boolean isPortrait) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        String lines = "1";
+        if (isPortrait) {
+            lines = pref.getString(PREF_CANDIDATE_LINES_PORTRAIT, String.valueOf(TextCandidatesViewManager.LINE_NUM_PORTRAIT));
+        } else {
+            lines = pref.getString(PREF_CANDIDATE_LINES_LANDSCAPE, String.valueOf(TextCandidatesViewManager.LINE_NUM_LANDSCAPE));
+        }
+        return Integer.parseInt(lines);
     }
 
     /**

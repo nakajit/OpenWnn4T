@@ -67,6 +67,13 @@
     <string name="preference_key_height_ratio_hint">標準サイズに対する比率を入力</string>
     <string name="preference_key_height_ratio_100">標準サイズ</string>
 
+    <string name="preference_candidate_lines_portrait_title">候補の行数 (縦画面) </string>
+    <string name="preference_candidate_lines_landscape_title">候補の行数 (横画面) </string>
+    <string name="preference_candidate_lines_1_name">1行 (横画面の標準)</string>
+    <string name="preference_candidate_lines_2_name">2行 (縦画面の標準)</string>
+    <string name="preference_candidate_lines_3_name">3行</string>
+    <string name="preference_candidate_lines_4_name">4行</string>
+
     <string name="preference_use_hardkeyboard_title">物理キーボード利用</string>
     <string name="preference_use_hardkeyboard_summary">常にソフトキーボードを非表示にする</string>
 

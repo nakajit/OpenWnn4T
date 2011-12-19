@@ -461,7 +461,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
             mViewCandidateList1st.setVisibility(View.VISIBLE);
             mViewCandidateList2nd.setVisibility(View.GONE);
             mViewCandidateBase.setMinimumHeight(-1);
-            int line = (mPortrait) ? LINE_NUM_PORTRAIT : LINE_NUM_LANDSCAPE;
+            int line = OpenWnnControlPanelJAJP.getCandidateLines(mWnn, mPortrait);
             mViewCandidateList1st.setMinimumHeight(getCandidateMinimumHeight() * line);
             return false;
 
@@ -504,7 +504,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
 
     /** @see CandidatesViewManager#getMaxLine */
     private int getMaxLine() {
-        int maxLine = (mPortrait) ? LINE_NUM_PORTRAIT : LINE_NUM_LANDSCAPE;
+        int maxLine = OpenWnnControlPanelJAJP.getCandidateLines(mWnn, mPortrait);
         return maxLine;
     }
 
@@ -711,7 +711,7 @@ public class TextCandidatesViewManager implements CandidatesViewManager, Gesture
 
         int indentWidth = mViewWidth / FULL_VIEW_DIV;
         int x         = indentWidth * mFullViewOccupyCount;
-        int nomalLine = (mPortrait) ? LINE_NUM_PORTRAIT : LINE_NUM_LANDSCAPE;
+        int nomalLine = OpenWnnControlPanelJAJP.getCandidateLines(mWnn, mPortrait);
         int y         = getCandidateMinimumHeight() * (mLineCount - nomalLine - 1);
         ViewGroup.LayoutParams params
               = new AbsoluteLayout.LayoutParams(width, height, x, y);
