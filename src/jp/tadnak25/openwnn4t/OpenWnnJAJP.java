@@ -787,8 +787,10 @@ public class OpenWnnJAJP extends OpenWnn4T {
         } else if (ev.code == OpenWnnEvent.LIST_CANDIDATES_NORMAL) {
             mStatus &= ~STATUS_CANDIDATE_FULL;
             mCandidatesViewManager.setViewType(CandidatesViewManager.VIEW_TYPE_NORMAL);
-            WnnWord word = mCandidatesViewManager.requestFocus();
-            changeL2Segment(word);
+            if (isEnableL2Converter() && mTargetLayer == ComposingText.LAYER2) {
+                WnnWord word = mCandidatesViewManager.requestFocus();
+                changeL2Segment(word);
+            }
             return true;
         }
 
