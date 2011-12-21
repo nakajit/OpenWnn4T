@@ -830,7 +830,8 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
         boolean found = false;
         int index;
         int[] JP_MODE_CYCLE_TABLE = JP_MODE_CYCLE_TABLE_NORMAL;
-        if (m5Lines && mCurrentKeyboardType == KEYBOARD_QWERTY) {
+        if (m5Lines && mCurrentKeyboardType == KEYBOARD_QWERTY ||
+                OpenWnnControlPanelJAJP.isUseHwKeyboard(mWnn) || !mHardKeyboardHidden) { /* for hardware keyboard */
             JP_MODE_CYCLE_TABLE = JP_MODE_CYCLE_TABLE_5LINES;
         }
         for (index = 0; index < JP_MODE_CYCLE_TABLE.length; index++) {

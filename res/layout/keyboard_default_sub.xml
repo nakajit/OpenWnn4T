@@ -31,13 +31,14 @@
     <TextView android:id="@+id/key_mode"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:paddingLeft="5dip"
+              android:paddingLeft="10dip"
               android:paddingTop="0dip"
-              android:paddingRight="5dip"
+              android:paddingRight="10dip"
               android:paddingBottom="0dip"
               android:textColor="@android:color/black"
-              android:textSize="10dip"
+              android:textSize="@dimen/candidate_font_size"
               android:textStyle="bold"
+              android:clickable="true"
               android:fadingEdge="horizontal" />
                 
     <TextView android:id="@+id/shift" 
@@ -48,7 +49,7 @@
 	      android:paddingTop="0dip"
 	      android:paddingRight="5dip"
 	      android:paddingBottom="0dip"
-	      android:textSize="10dip"
+              android:textSize="@dimen/candidate_font_size"
 	      android:textStyle="bold"
 	      android:fadingEdge="horizontal"
               android:text="@string/indicator_caps"/>
@@ -61,9 +62,26 @@
 	      android:paddingTop="0dip"
 	      android:paddingRight="5dip"
 	      android:paddingBottom="0dip"
-	      android:textSize="10dip"
+              android:textSize="@dimen/candidate_font_size"
 	      android:textStyle="bold"
 	      android:fadingEdge="horizontal"
               android:text="@string/indicator_alt"/>
+
+    <TextView android:id="@+id/button_symbol"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="2dip"
+              android:paddingLeft="20dip"
+              android:paddingTop="0dip"
+              android:paddingRight="20dip"
+              android:paddingBottom="0dip"
+              android:background="@android:color/darker_gray"
+              android:textColor="@android:color/black"
+              android:textSize="@dimen/candidate_font_size"
+              android:textStyle="bold"
+              android:fadingEdge="horizontal"
+              android:clickable="true"
+              android:longClickable="true"
+              android:text="@string/key_symbol" />
 
 </LinearLayout>

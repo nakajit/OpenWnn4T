@@ -650,11 +650,46 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
         mSubView = (ViewGroup) parent.getLayoutInflater().inflate(R.layout.keyboard_default_sub, null);
         if ( OpenWnnControlPanelJAJP.isUseHwKeyboard(parent) || !mHardKeyboardHidden ) {
             mMainView.addView(mSubView);
+            initIndicatorKeys(parent, mSubView);
         } else if (mKeyboardView != null) {
             mMainView.addView(mKeyboardView);
         }
         
         return mMainView;
+    }
+
+    private void initIndicatorKeys(Context context, ViewGroup indicatorView) {
+        TextView shift = (TextView)indicatorView.findViewById(R.id.shift);
+        TextView alt = (TextView)indicatorView.findViewById(R.id.alt);
+        TextView symbol = (TextView)indicatorView.findViewById(R.id.button_symbol);
+        TextView mode = (TextView)indicatorView.findViewById(R.id.key_mode);
+
+        if (mKeyHeightRatio != 100) {
+            int fontSize = (int)context.getResources().getDimension(R.dimen.candidate_font_size);
+            fontSize = (fontSize * mKeyHeightRatio + 50) / 100;
+            shift.setTextSize(fontSize);
+            alt.setTextSize(fontSize);
+            symbol.setTextSize(fontSize);
+            mode.setTextSize(fontSize);
+        }
+
+        symbol.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    onKey(KEYCODE_QWERTY_EMOJI, null);
+                }
+        });
+        symbol.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    onKey(KEYCODE_LIST_MUSHROOM, null);
+                    return true;
+                }
+        });
+
+        mode.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    onKey(KEYCODE_QWERTY_TOGGLE_MODE, null);
+                }
+        });
     }
     
     /**
