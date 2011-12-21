@@ -2666,6 +2666,7 @@ public class OpenWnnJAJP extends OpenWnn4T {
         if (mConverter != null) {
             learnWord(word);
         }
+        initCommitInfoForWatchCursor();
         commitText(word.candidate);
         checkCommitInfo();
     }
