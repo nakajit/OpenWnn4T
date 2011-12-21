@@ -220,6 +220,8 @@ public class OpenWnn4T extends InputMethodService {
             return false;
         } else if ( OpenWnnControlPanelJAJP.isUseHwKeyboard(this) || !isHardKeyboardHidden ) {
             return false;
+        } else if ( OpenWnnControlPanelJAJP.isNotUseFullscreen(this) ) {
+            return false;
         } else if (mCandidatesViewManager != null &&
                 mCandidatesViewManager.getViewType() == CandidatesViewManager.VIEW_TYPE_FULL) {
             return false;

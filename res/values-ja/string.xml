@@ -77,6 +77,9 @@
     <string name="preference_use_hardkeyboard_title">物理キーボード利用</string>
     <string name="preference_use_hardkeyboard_summary">常にソフトキーボードを非表示にする</string>
 
+    <string name="preference_not_use_fullscreen_title">全画面入力オフ</string>
+    <string name="preference_not_use_fullscreen_summary">横画面で全画面入力モードを使わない</string>
+
     <string name="preference_conversion_menu">変換設定</string>
 
     <string name="preference_prediction_title">予測変換</string>

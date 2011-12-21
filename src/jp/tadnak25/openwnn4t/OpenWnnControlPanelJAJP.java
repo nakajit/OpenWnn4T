@@ -36,6 +36,7 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     private static final String PREF_5LINES_KEY = "5lines";
     private static final String PREF_SETTINGS_KEY = "keyboard_locale";
     private static final String PREF_USE_HARDKEYBOARD_KEY = "use_hardkeyboard";
+    private static final String PREF_NOT_USE_FULLSCREEN_KEY = "not_use_fullscreen";
     private static final String PREF_SKINS_KEY = "keyboard_skin";
     private static final String PREF_KEY_HEIGHT_RATIO = "key_height_ratio";
     private static final String PREF_CANDIDATE_LINES_PORTRAIT = "candidate_lines_portrait";
@@ -227,6 +228,16 @@ public class OpenWnnControlPanelJAJP extends PreferenceActivity
     public static boolean isUseHwKeyboard(Context context) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         return pref.getBoolean(PREF_USE_HARDKEYBOARD_KEY, false);
+    }
+
+    /**
+     * load not use fullscreen mode preferences
+     * <br>
+     * @param context  The context
+     */
+    public static boolean isNotUseFullscreen(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        return pref.getBoolean(PREF_NOT_USE_FULLSCREEN_KEY, false);
     }
 
     /**

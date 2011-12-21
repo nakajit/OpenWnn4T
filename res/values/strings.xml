@@ -77,6 +77,9 @@
     <string name="preference_use_hardkeyboard_title"> Use Hardware Keyboard </string>
     <string name="preference_use_hardkeyboard_summary"> Not display software keyboard always. </string>
 
+    <string name="preference_not_use_fullscreen_title"> Not use Fullscreen </string>
+    <string name="preference_not_use_fullscreen_summary"> The IME never go into fullscreen. </string>
+
     <string name="preference_conversion_menu">Conversion</string>
 
     <string name="preference_prediction_title">Word Prediction</string>
