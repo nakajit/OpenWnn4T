@@ -38,6 +38,7 @@ import android.net.Uri;
 import android.util.Log;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * The default software keyboard class.
@@ -243,15 +244,24 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     protected int mKeyHeightRatio = 100;
 
     protected class Keyboard extends android.inputmethodservice.Keyboard {
+        private Key mSpaceKey;
+        private final int[] mSpaceKeyIndexArray;
+
         public Keyboard(Context context, int xmlLayoutResId) {
             super(context, xmlLayoutResId, 0);
+            // The index of space key is available only after Keyboard constructor has finished.
+            mSpaceKeyIndexArray = new int[] { indexOfSpaceKey() };
         }
         public Keyboard(Context context, int xmlLayoutResId, int modeId) {
             super(context, xmlLayoutResId, modeId);
+            // The index of space key is available only after Keyboard constructor has finished.
+            mSpaceKeyIndexArray = new int[] { indexOfSpaceKey() };
         }
         public Keyboard(Context context, int layoutTemplateResId,
                 CharSequence characters, int columns, int horizontalPadding) {
             super(context, layoutTemplateResId, characters, columns, horizontalPadding);
+            // The index of space key is available only after Keyboard constructor has finished.
+            mSpaceKeyIndexArray = new int[] { indexOfSpaceKey() };
         }
 
         @Override
@@ -260,7 +270,39 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
             if (mKeyHeightRatio != 100) {
                 parent.defaultHeight = (getKeyHeight() * mKeyHeightRatio + 50) / 100;
             }
-            return new Key(res, parent, x, y, parser);
+            Key key = new Key(res, parent, x, y, parser);
+            switch (key.codes[0]) {
+            case ' ':
+            case '\u3000':
+                mSpaceKey = key;
+                break;
+            }
+            return key;
+        }
+
+        @Override
+        public int[] getNearestKeys(int x, int y) {
+            if (mSpaceKey != null && mSpaceKey.isInside(x, y)) {
+                return mSpaceKeyIndexArray;
+            }
+            // Avoid dead pixels at edges of the keyboard
+            return super.getNearestKeys(Math.max(0, Math.min(x, getMinWidth() - 1)),
+                    Math.max(0, Math.min(y, getHeight() - 1)));
+        }
+
+        private int indexOfSpaceKey() {
+            int spaceKeyIndex = indexOf(' ');
+            if (spaceKeyIndex < 0) spaceKeyIndex = indexOf('\u3000');
+            return spaceKeyIndex;
+        }
+
+        private int indexOf(int code) {
+            List<Key> keys = getKeys();
+            int count = keys.size();
+            for (int i = 0; i < count; i++) {
+                if (keys.get(i).codes[0] == code) return i;
+            }
+            return -1;
         }
     }
 
