@@ -2590,7 +2590,11 @@ public class OpenWnnJAJP extends OpenWnn4T {
 
         int composingLength = mComposingText.toString(mTargetLayer).length();
         CharSequence seq = mInputConnection.getTextBeforeCursor(mPrevCommitText.length() + composingLength, 0);
-        if (seq == null) return;
+        if (seq == null || seq.length() < composingLength) {
+            mPrevCommitCount = 0;
+            clearCommitInfo();
+            return;
+        }
         seq = seq.subSequence(0, seq.length() - composingLength);
         if (!seq.equals(mPrevCommitText.toString())) {
             mPrevCommitCount = 0;
