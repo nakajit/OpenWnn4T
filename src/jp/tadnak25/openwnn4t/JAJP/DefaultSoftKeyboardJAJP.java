@@ -690,6 +690,14 @@ public class DefaultSoftKeyboardJAJP extends DefaultSoftKeyboard {
             mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.LIST_MUSHROOM));
             break;
 
+        case DefaultSoftKeyboard.KEYCODE_LAUNCH_SETTINGS:
+            mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.LAUNCH_SETTINGS));
+            break;
+
+        case DefaultSoftKeyboard.KEYCODE_SHOW_IME_PICKER:
+            mWnn.onEvent(new OpenWnnEvent(OpenWnnEvent.SHOW_IME_PICKER));
+            break;
+
         case KEYCODE_NOP:
             break;
 

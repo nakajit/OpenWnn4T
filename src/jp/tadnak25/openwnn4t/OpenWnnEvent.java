@@ -235,6 +235,16 @@ public class OpenWnnEvent {
      */
     public static final int CALLBACK_MUSHROOM = 0xF0000101;
 
+    /**
+     * Launch the IME settings.
+     */
+    public static final int LAUNCH_SETTINGS = 0xF0000110;
+
+    /**
+     * Show the Input Method picker.
+     */
+    public static final int SHOW_IME_PICKER = 0xF0000120;
+
     /** Event code */
     public int code = UNDEFINED;
     /** Detail mode of the event */

@@ -25,7 +25,8 @@
 	 android:keyEdgeFlags="left"/>
     <Key android:codes="-302" android:keyLabel="@string/key_12key_switch_full_katakana"/>
     <Key android:codes="-303" android:keyLabel="@string/key_12key_switch_full_alphabet"/>
-    <Key android:codes="-304" android:keyLabel="@string/key_12key_switch_full_number"
+    <Key android:codes="-304" android:keyLabel="@string/key_12key_switch_full_number" />
+    <Key android:codes="-503" android:keyIcon="@android:drawable/ic_menu_edit"
 	 android:keyEdgeFlags="right"/>
   </Row>
   <Row>
@@ -33,7 +34,8 @@
 	 android:keyEdgeFlags="left"/>
     <Key android:codes="-306" android:keyLabel="@string/key_12key_switch_half_katakana"/>
     <Key android:codes="-307" android:keyLabel="@string/key_12key_switch_half_alphabet"/>
-    <Key android:codes="-308" android:keyLabel="@string/key_12key_switch_half_number"
+    <Key android:codes="-308" android:keyLabel="@string/key_12key_switch_half_number" />
+    <Key android:codes="-502" android:keyIcon="@android:drawable/ic_menu_preferences"
 	 android:keyEdgeFlags="right"/>
   </Row>
 </Keyboard>

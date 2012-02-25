@@ -57,6 +57,12 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
     /** List the Mushroom/Candy applications */
     public static final int KEYCODE_LIST_MUSHROOM = -501;
 
+    /** Launch the IME settings */
+    public static final int KEYCODE_LAUNCH_SETTINGS = -502;
+
+    /** Show the Input Method Picker */
+    public static final int KEYCODE_SHOW_IME_PICKER = -503;
+
     /** Key code for EISU-KANA conversion */
     public static final int KEYCODE_EISU_KANA = -305;
 
@@ -730,6 +736,12 @@ public class DefaultSoftKeyboard implements InputViewManager, KeyboardView.OnKey
         mode.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     onKey(KEYCODE_QWERTY_TOGGLE_MODE, null);
+                }
+        });
+        mode.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    onKey(KEYCODE_LAUNCH_SETTINGS, null);
+                    return true;
                 }
         });
     }

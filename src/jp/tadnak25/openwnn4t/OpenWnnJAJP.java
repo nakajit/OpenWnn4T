@@ -717,6 +717,14 @@ public class OpenWnnJAJP extends OpenWnn4T {
             onMushroomFinished();
             return true;
 
+        case OpenWnnEvent.LAUNCH_SETTINGS:
+            launchSettings();
+            return true;
+
+        case OpenWnnEvent.SHOW_IME_PICKER:
+            showInputMethodPicker();
+            return true;
+
         default:
             break;
         }
@@ -2748,4 +2756,9 @@ public class OpenWnnJAJP extends OpenWnn4T {
         mComposingText.replaceStrSegment(ComposingText.LAYER2, ss);
         updateViewStatus(ComposingText.LAYER2, false, false);
     }
+
+    private void launchSettings() {
+        super.launchSettings(OpenWnnControlPanelJAJP.class);
+    }
+
 }

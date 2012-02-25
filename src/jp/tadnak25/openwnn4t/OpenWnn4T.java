@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
 import android.util.Log;
@@ -313,6 +314,18 @@ public class OpenWnn4T extends InputMethodService {
 
     public static void setResultCandy(String candidates) {
         mCandy = candidates;
+    }
+
+    protected void launchSettings (Class<? extends PreferenceActivity> settingsClass) {
+        Intent intent = new Intent(this, settingsClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        handleClose();
+    }
+
+    protected void showInputMethodPicker() {
+        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+                .showInputMethodPicker();
     }
 
 }
