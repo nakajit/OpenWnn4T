@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
  OpenWnn QWERTY README
-  Version 1.3.5.2.8
+  Version 1.3.5.2.9
    (C) NAKAJI Tadayoshi 2011 All Rights Reserved.
 -------------------------------------------------------------------------------
 
@@ -15,6 +15,8 @@
 
     res/                                      IME resource (XML, PNG)
         values-land/                          | add
+            *.xml                             |
+        values-large/                         | add
             *.xml                             |
         values-xlarge/                        | add
             *.xml                             |
