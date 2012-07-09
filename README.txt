@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
  OpenWnn QWERTY README
-  Version 1.3.5.2.9
-   (C) NAKAJI Tadayoshi 2011 All Rights Reserved.
+  Version 1.3.5.2.9 (Stable)
+   (C) NAKAJI Tadayoshi 2011,2012 All Rights Reserved.
 -------------------------------------------------------------------------------
 
 1. About OpenWnn QWERTY
